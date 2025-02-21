@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import type { JSX } from "react";
 import { useSearchParams } from "next/navigation";
@@ -13,9 +12,13 @@ const links: {
   href: string;
   label: string;
 }[] = [
+  // {
+  //   href: "/#pricing",
+  //   label: "Pricing",
+  // },
   {
-    href: "/#pricing",
-    label: "Pricing",
+    href: "/about",
+    label : "About",
   },
   {
     href: "/#testimonials",
@@ -27,7 +30,13 @@ const links: {
   },
 ];
 
-const cta: JSX.Element = <ButtonSignin extraStyle="btn-primary" />;
+const cta: JSX.Element = (
+  <Link href="/#breathe" scroll={false}>
+    Get Started
+  </Link>
+);
+
+// const cta: JSX.Element
 
 // A header with a logo on the left, links in the center (like Pricing, etc...), and a CTA (like Get Started or Login) on the right.
 // The header is responsive, and on mobile, the links are hidden behind a burger button.

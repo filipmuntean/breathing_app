@@ -13,25 +13,55 @@ interface FAQItemProps {
 
 const faqList: FAQItemProps[] = [
   {
-    question: "What is this app inteded for?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "What is this app intended for?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        This app is designed to help reduce anxiety by guiding you through calming breathing exercises. It's an easy-to-use tool for managing stress and promoting mindfulness.
+      </div>
+    ),
   },
   {
-    question: "Can I get a refund?",
+    question: "How do the breathing exercises work?",
     answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
-      </p>
+      <div className="space-y-2 leading-relaxed">
+        The app cycles through phases such as Inhale, Hold, and Exhale. Each phase has a set duration to help regulate your breathing, calm your mind, and reduce stress.
+      </div>
+    ),
+  },
+  {
+    question: "Can I customize my breathing sessions?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        Currently, the breathing sessions follow a fixed cycle for optimal results. Future updates may include customizable options to suit your personal relaxation needs.
+      </div>
+    ),
+  },
+  {
+    question: "Is the app suitable for all ages?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        Yes, the app is designed with gentle exercises that are beneficial for users of all ages. However, if you have specific health concerns, please consult with your healthcare provider.
+      </div>
+    ),
+  },
+  {
+    question: "Do I need an internet connection?",
+    answer: (
+      <div className="space-y-2 leading-relaxed">
+        No, once the app is installed, you can use it offline. This ensures you can practice your breathing exercises anytime, anywhere.
+      </div>
     ),
   },
   {
     question: "I have another question",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <div className="space-y-2 leading-relaxed">
+        If you have any additional questions or need further support, feel free to contact our team by email.
+      </div>
     ),
   },
 ];
+
 
 const FaqItem = ({ item }: { item: FAQItemProps }) => {
   const accordion = useRef(null);
