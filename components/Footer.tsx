@@ -37,7 +37,7 @@ const Footer = () => {
               Copyright © {new Date().getFullYear()} - All rights reserved
             </p>
 
-            <a
+            {/* <a
               href="https://shipfa.st/?ref=shipfast_badge"
               title="Go to ShipFast"
               target="_blank"
@@ -62,7 +62,7 @@ const Footer = () => {
                   ShipFast
                 </span>
               </div>
-            </a>
+            </a> */}
           </div>
           <div className="flex-grow flex flex-wrap justify-center -mb-10 md:mt-0 mt-10 text-center">
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">

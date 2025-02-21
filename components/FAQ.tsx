@@ -13,7 +13,7 @@ interface FAQItemProps {
 
 const faqList: FAQItemProps[] = [
   {
-    question: "What do I get exactly?",
+    question: "What is this app inteded for?",
     answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
   },
   {
