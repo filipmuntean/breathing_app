@@ -1,4 +1,3 @@
-import Breathe from "@/components/Breathe";
 import FeaturesAccordion from "@/components/FeaturesAccordion";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";

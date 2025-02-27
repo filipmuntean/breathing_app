@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import React from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 
 const DEFAULT_PHASES = [

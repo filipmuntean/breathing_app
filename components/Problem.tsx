@@ -47,8 +47,9 @@ const Problem = () => {
           Daily stress and anxiety can overwhelm your life.
         </h2>
         <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
-          In today's fast-paced world, constant pressures from work and life leave many of us feeling drained. Finding a moment of calm is essential for your well-being.
+          In today&#39;s fast-paced world, constant pressures from work and life leave many of us feeling drained. Finding a moment of calm is essential for your well-being.
         </p>
+
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
           <Step emoji="😰" text="Stress builds up" />
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />

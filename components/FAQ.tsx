@@ -16,7 +16,7 @@ const faqList: FAQItemProps[] = [
     question: "What is this app intended for?",
     answer: (
       <div className="space-y-2 leading-relaxed">
-        This app is designed to help reduce anxiety by guiding you through calming breathing exercises. It's an easy-to-use tool for managing stress and promoting mindfulness.
+        This app is designed to help reduce anxiety by guiding you through calming breathing exercises. It is an easy-to-use tool for managing stress and promoting mindfulness.
       </div>
     ),
   },
