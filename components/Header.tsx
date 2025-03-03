@@ -17,13 +17,13 @@ const links: {
   //   label: "Pricing",
   // },
   {
-    href: "/about",
+    href: "/#about",
     label : "About",
   },
-  {
-    href: "/#testimonials",
-    label: "Reviews",
-  },
+  // {
+  //   href: "/#testimonials",
+  //   label: "Reviews",
+  // },
   {
     href: "/#faq",
     label: "FAQ",
@@ -85,7 +85,7 @@ const Header = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 24 24"
+              viewBox="0 0 24 24" 
               strokeWidth={1.5}
               stroke="currentColor"
               className="w-6 h-6 text-base-content"

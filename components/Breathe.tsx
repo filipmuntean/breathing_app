@@ -63,7 +63,7 @@ const Breathe: React.FC = () => {
 
   return (
     <section id="breathe">
-      <div className="flex flex-col items-center justify-center min-h-screen bg-white-100">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
         {/* Main Timer UI */}
         <div className="relative bg-white rounded-2xl shadow-2xl p-12 text-center max-w-2xl w-full">
           

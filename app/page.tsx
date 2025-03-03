@@ -25,7 +25,10 @@ export default function Home() {
         {/* <WithWithout /> */}
        
         {/* <Pricing /> */}
+        <Hero />
+        <Problem />
         <FAQ />
+        {/* <FeaturesAccordion /> */}
         {/* <CTA /> */}
       </main>
       <Footer />
