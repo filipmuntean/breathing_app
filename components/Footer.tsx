@@ -73,7 +73,7 @@ const Footer = () => {
                 LINKS
               </div>
 
-              <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
+              {/* <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
                 {config.resend.supportEmail && (
                   <a
                     href={`mailto:${config.resend.supportEmail}`}
@@ -93,7 +93,7 @@ const Footer = () => {
                 <a href="/#" target="_blank" className="link link-hover">
                   Affiliates
                 </a>
-              </div>
+              </div> */}
             </div>
 
             <div className="lg:w-1/3 md:w-1/2 w-full px-4">
