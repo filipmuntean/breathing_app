@@ -14,10 +14,10 @@ import Head from 'next/head';
 export default function Home() {
   return (
     <>
-    <Head>
+    {/* <Head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
      crossOrigin="anonymous"></script>
-      </Head>
+      </Head> */}
 
       <Suspense>
         <Header />

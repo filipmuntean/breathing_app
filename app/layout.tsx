@@ -6,7 +6,7 @@ import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
-
+import Script from "next/script";
 const font = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
@@ -25,6 +25,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
       <body>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
+     crossOrigin="anonymous"></Script>
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
