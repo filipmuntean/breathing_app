@@ -65,10 +65,10 @@ const Breathe: React.FC = () => {
   return (
     
     <>
-    {/* <Head>
+    <Head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
      crossOrigin="anonymous"></script>
-      </Head> */}
+      </Head> 
 
     <section id="breathe">
       <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
