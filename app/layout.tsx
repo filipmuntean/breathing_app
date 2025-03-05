@@ -25,16 +25,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
       <head>
 
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
-          crossOrigin="anonymous"></Script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
+          crossOrigin="anonymous"></script>
       </head>
       <body>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
-          crossOrigin="anonymous"></Script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
+          crossOrigin="anonymous"></script>
 
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
-          crossOrigin="anonymous"></Script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
+          crossOrigin="anonymous"></script>
         <ins className="adsbygoogle"
           style={{
             display: 'block',
@@ -45,9 +45,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           data-ad-slot="4225636729"
           data-ad-format="auto"
           data-full-width-responsive="true"></ins>
-        <Script>
+        <script>
           (adsbygoogle = window.adsbygoogle || []).push({ });
-        </Script>
+        </script>
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
