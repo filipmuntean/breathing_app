@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { IoSettingsOutline } from "react-icons/io5";
+import Head from "next/head"
 
 const DEFAULT_PHASES = [
   { name: "Inhale", duration: 4 },
@@ -62,6 +63,13 @@ const Breathe: React.FC = () => {
   };
 
   return (
+    
+    <>
+    <Head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
+     crossOrigin="anonymous"></script>
+      </Head>
+
     <section id="breathe">
       <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
         {/* Main Timer UI */}
@@ -161,6 +169,7 @@ const Breathe: React.FC = () => {
         )}
       </div>
     </section>
+    </>
   );
 };
 
