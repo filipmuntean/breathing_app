@@ -34,7 +34,7 @@ const Footer = () => {
               {config.appDescription}
             </p>
             <p className="mt-3 text-sm text-base-content/70">
-            Made by <a href="[filipmuntean.vercel.app]" className="link link-primary">Filip</a>
+            Made by <a href="https://filipmuntean.vercel.app" className="link link-primary">Filip</a>
             </p>
             <p className="mt-3 text-sm text-base-content/60">
               Copyright © {new Date().getFullYear()} - All rights reserved
