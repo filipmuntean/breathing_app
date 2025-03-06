@@ -16,6 +16,21 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+{/* <ins className="adsbygoogle"
+style={{
+  display: 'block',
+  // You can adjust width and height if needed
+  width: '100%'
+}}
+data-ad-client="ca-pub-1660907750605458"
+data-ad-slot="4225636729"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins> */}
+
+{/* <script>
+(adsbygoogle = window.adsbygoogle || []).push({ });
+</script> */}
+
 // This adds default SEO tags to all pages in our app.
 // You can override them in each page passing params to getSOTags() function.
 export const metadata = getSEOTags();
@@ -29,19 +44,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}
-        <ins className="adsbygoogle"
-          style={{
-            display: 'block',
-            // You can adjust width and height if needed
-            width: '100%'
-          }}
-          data-ad-client="ca-pub-1660907750605458"
-          data-ad-slot="4225636729"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({ });
-        </script>
+       
+       
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>

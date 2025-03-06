@@ -8,7 +8,7 @@ const config = {
   appDescription:
     "A breathing app for when you are a bit anxious or just need to relax and take a step back. ",
   // REQUIRED (no https://, not trailing slash at the end, just the naked domain)
-  domainName: "shipfa.st",
+  domainName: "justbreathe.baby",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (resend.supportEmail) otherwise customer support won't work.
     id: "",
