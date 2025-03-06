@@ -31,9 +31,7 @@ const links: {
 ];
 
 const cta: JSX.Element = (
-  <Link href="/log_in" scroll={false}>
-    Log in
-  </Link>
+  <ButtonSignin/>
 );
 
 // const cta: JSX.Element

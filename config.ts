@@ -73,7 +73,7 @@ const config = {
   },
   resend: {
     // REQUIRED — Email 'From' field to be used when sending magic login links
-    fromNoReply: `The Breathing App <noreply@resend.inha.le>`,
+    fromNoReply: `The Breathing App <noreply@resend.justbreathe.baby>`,
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
     fromAdmin: `Filip at The Breathing App <filip@inha.le>`,
     // Email shown to customer if they need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
