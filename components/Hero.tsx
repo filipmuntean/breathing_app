@@ -30,7 +30,7 @@ const Hero = () => {
           Our guided breathing exercises help reduce anxiety and promote mindfulness. Take a deep breath and discover the power of calm.
         </p>
         {/* <ButtonLead extraStyle="!max-w-none !w-full" /> */}
-        <GetStarted path="/breathe" extraStyle="!max-w-none !w-full" />
+        <GetStarted path="/#breathe" extraStyle="!max-w-none !w-full" />
         {/* <TestimonialsAvatars priority={true} /> */}
       </div>
       {/* <div className="lg:w-full">

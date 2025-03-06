@@ -31,8 +31,8 @@ const links: {
 ];
 
 const cta: JSX.Element = (
-  <Link href="/#breathe" scroll={false}>
-    Get Started
+  <Link href="/log_in" scroll={false}>
+    Log in
   </Link>
 );
 
