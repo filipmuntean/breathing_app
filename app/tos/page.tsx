@@ -62,7 +62,7 @@ const TOS = () => {
 Welcome to Just Breathe (https://justbreathe.baby). By using our app, you agree to these Terms of Service.
 
 1. Acceptance of Terms
-By accessing or using the Breathing App for Anxiety, you agree to comply with these Terms of Service. If you do not agree, please do not use our app.
+By accessing or using the Just Breathe, you agree to comply with these Terms of Service. If you do not agree, please do not use our app.
 
 2. Use of the App
 The app is provided free of charge for personal use.
@@ -81,7 +81,7 @@ These Terms are governed by the laws of The Netherlands.
 6. Contact Information
 For any questions regarding these Terms, contact us at filipmorris@duck.com.
 
-By using Breathing App for Anxiety, you agree to these Terms of Service.
+By using Just Breathe, you agree to these Terms of Service.
 
 `}
         </pre>

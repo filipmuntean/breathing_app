@@ -12,16 +12,16 @@ import config from "@/config";
 // You are an excellent lawyer.
 
 // I need your help to write a simple privacy policy for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - User data collected: name, email and payment information
+// - Website: https://justbreathe.baby
+// - Name: Just Breathe
+// - Description: A simple breathing app for anxiety
+// - User data collected: name, email
 // - Non-personal data collection: web cookies
 // - Purpose of Data Collection: Order processing
 // - Data sharing: we do not share the data with any other parties
 // - Children's Privacy: we do not collect any data from children
 // - Updates to the Privacy Policy: users will be updated by email
-// - Contact information: marc@shipfa.st
+// - Contact information: filipmorris@duck.com
 
 // Please write a simple privacy policy for my site. Add the current date.  Do not add or explain your reasoning. Answer:
 
@@ -57,7 +57,7 @@ const PrivacyPolicy = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {` Effective Date: March 4, 2025
+          {` Effective Date: March 12, 2025
 
 Welcome to Just Breathe (https://justbreathe.baby). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.  
 
@@ -72,7 +72,7 @@ Your data is used to:
 - Provide insights into your time spent reducing anxiety.  
 
 3. Data Sharing  
-We do not share your personal or non-personal data with any third parties.  
+We do not sell, rent, or share your data with any third parties.  
 
 4. Children's Privacy  
 We do not collect any personal data from children under 13.  
@@ -83,7 +83,7 @@ We may update this policy from time to time. Any changes will be communicated vi
 6. Contact Us  
 If you have any questions about this Privacy Policy, please contact us at filipmorris@duck.com.  
 
-By using Inhale Breathing App, you agree to this Privacy Policy.  `}
+By using Just Breathe, you agree to this Privacy Policy.  `}
         </pre>
       </div>
     </main>
