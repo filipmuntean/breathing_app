@@ -59,7 +59,7 @@ const TOS = () => {
         >
           {`Effective Date: March 4, 2025
 
-Welcome to Breathing App for Anxiety (https://inha.le). By using our app, you agree to these Terms of Service.
+Welcome to Just Breathe (https://justbreathe.baby). By using our app, you agree to these Terms of Service.
 
 1. Acceptance of Terms
 By accessing or using the Breathing App for Anxiety, you agree to comply with these Terms of Service. If you do not agree, please do not use our app.
@@ -71,7 +71,7 @@ You may not use the app for any illegal or unauthorized purposes.
 3. User Data Collection
 We collect name and email to allow login and track progress.
 We collect web cookies for site functionality and analytics.
-For more details, see our Privacy Policy at https://inha.le/privacy-policy.
+For more details, see our Privacy Policy at https://justbreathe.baby/privacy-policy.
 4. Updates to These Terms
 We may update these Terms of Service from time to time. Users will be notified of any changes via email.
 

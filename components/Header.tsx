@@ -16,6 +16,7 @@ const links: {
   //   href: "/#pricing",
   //   label: "Pricing",
   // },
+  
   {
     href: "/#about",
     label : "About",
@@ -24,6 +25,9 @@ const links: {
   //   href: "/#testimonials",
   //   label: "Reviews",
   // },
+  {href: "/#motivation",
+    label: "Motivation"
+  },
   {
     href: "/#faq",
     label: "FAQ",

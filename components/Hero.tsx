@@ -6,7 +6,7 @@ import GetStarted from "./GetStarted";
 
 const Hero = () => {
   return (
-    <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20" id = "about">
+    <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20" id = "hero">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         {/* <a
           href="https://www.producthunt.com/posts/shipfast-2?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-shipfast&#0045;2"
@@ -27,10 +27,10 @@ const Hero = () => {
           Find Your Calm, One Breath at a Time
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          Our guided breathing exercises help reduce anxiety and promote mindfulness. Take a deep breath and discover the power of calm.
+          {/* Our guided breathing exercises help reduce anxiety and promote mindfulness. Take a deep breath and discover the power of calm. */}
         </p>
         {/* <ButtonLead extraStyle="!max-w-none !w-full" /> */}
-        <GetStarted path="/#breathe" extraStyle="!max-w-none !w-full" />
+        {/* <GetStarted path="/#breathe" extraStyle="!max-w-none !w-full" /> */}
         {/* <TestimonialsAvatars priority={true} /> */}
       </div>
       {/* <div className="lg:w-full">

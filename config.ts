@@ -3,7 +3,7 @@ import { ConfigProps } from "./types/config";
 
 const config = {
   // REQUIRED
-  appName: "Breathing Timer",
+  appName: "Just Breathe",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "A breathing app for when you are a bit anxious or just need to relax and take a step back. ",

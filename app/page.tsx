@@ -8,6 +8,7 @@ import FeaturesAccordion from "@/components/FeaturesAccordion";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
+import About from '@/components/About';
 import Footer from "@/components/Footer";
 import Head from 'next/head';
 
@@ -17,21 +18,24 @@ export default function Home() {
     <Head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1660907750605458"
      crossOrigin="anonymous"></script>
+     
       </Head>
 
       <Suspense>
         <Header />
       </Suspense>
       <main>
-
+      
         <Suspense>
         <Breathe />
         </Suspense>
         {/* <WithWithout /> */}
-       
+        
         {/* <Pricing /> */}
-        <Hero />
+       
+        <About />
         <Problem />
+        
         <FAQ />
         {/* <FeaturesAccordion /> */}
         {/* <CTA /> */}

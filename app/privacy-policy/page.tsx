@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
         >
           {` Effective Date: March 4, 2025
 
-Welcome to Inhale Breathing App (https://inha.le). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.  
+Welcome to Just Breathe (https://justbreathe.baby). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.  
 
 1. Information We Collect  
 We collect the following data when you use our app:  
