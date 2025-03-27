@@ -1,8 +1,9 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
-import marcImg from "@/app/blog/_assets/images/authors/marc.png";
+import filipImg from "@/app/blog/_assets/images/authors/filip.jpeg";
 import introducingSupabaseImg from "@/public/blog/introducing-supabase/header.png";
-
+import placeholderImage1 from '@/app/blog/_assets/images/breathing-anxiety-relief.jpg';
+import placeholderImage2 from '@/app/blog/_assets/images/breathwork-mental-performance.jpg';
 // ==================================================================================================================================================================
 // BLOG CATEGORIES 🏷️
 // ==================================================================================================================================================================
@@ -50,6 +51,7 @@ export const categories: categoryType[] = [
 // ==================================================================================================================================================================
 // BLOG AUTHORS 📝
 // ==================================================================================================================================================================
+
 
 export type authorType = {
   slug: string;
@@ -133,32 +135,34 @@ export const authors: authorType[] = [
     // The slug to use in the URL, from the authorSlugs object above.
     slug: authorSlugs.marc,
     // The name to display in the author's bio. Up to 60 characters.
-    name: "Marc Lou",
+    name: "Filip Muntean",
     // The job to display in the author's bio. Up to 60 characters.
-    job: "Maker of ByeDispute",
-    // The description of the author to display in the author's bio. Up to 160 characters.
-    description:
-      "Marc is a developer and an entrepreneur. He's built 20 startups in the last 3 years. 6 were profitable and 3 were acquired. He's currently building ByeDispute, the #1 Stripe Chargebacks Protection tool.",
+    // job: "Maker of ByeDispute",
+    // // The description of the author to display in the author's bio. Up to 160 characters.
+    // description:
+    //   "Marc is a developer and an entrepreneur. He's built 20 startups in the last 3 years. 6 were profitable and 3 were acquired. He's currently building ByeDispute, the #1 Stripe Chargebacks Protection tool.",
+    job: 'AI Student & App Developer',
+    description: 'A master\'s student in AI passionate about developing mental health technologies to support students and professionals managing anxiety.',
     // The avatar of the author to display in the author's bio and avatar badge. It's better to use a local image, but you can also use an external image (https://...)
-    avatar: marcImg,
+    avatar: filipImg,
     // A list of social links to display in the author's bio.
-    socials: [
-      {
-        name: socialIcons.twitter.name,
-        icon: socialIcons.twitter.svg,
-        url: "https://twitter.com/marc_louvion",
-      },
-      {
-        name: socialIcons.linkedin.name,
-        icon: socialIcons.linkedin.svg,
-        url: "https://www.linkedin.com/in/marclouvion/",
-      },
-      {
-        name: socialIcons.github.name,
-        icon: socialIcons.github.svg,
-        url: "https://github.com/Marc-Lou-Org/ship-fast",
-      },
-    ],
+    // socials: [
+    //   {
+    //     name: socialIcons.twitter.name,
+    //     icon: socialIcons.twitter.svg,
+    //     url: "https://twitter.com/marc_louvion",
+    //   },
+    //   {
+    //     name: socialIcons.linkedin.name,
+    //     icon: socialIcons.linkedin.svg,
+    //     url: "https://www.linkedin.com/in/marclouvion/",
+    //   },
+    //   {
+    //     name: socialIcons.github.name,
+    //     icon: socialIcons.github.svg,
+    //     url: "https://github.com/Marc-Lou-Org/ship-fast",
+    //   },
+    // ],
   },
 ];
 
@@ -197,36 +201,27 @@ const styles: {
 };
 
 // All the blog articles data display in the /blog/[articleId].js pages.
+
 export const articles: articleType[] = [
   {
-    // The unique slug to use in the URL. It's also used to generate the canonical URL.
-    slug: "introducing-supabase",
-    // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
-    title: "Introducing Supabase to ShipFast",
-    // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
-    description:
-      "Supabase is an open-source Firebase alternative. It's a great tool for building a backend for your app. It's now integrated with ShipFast!",
-    // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
+    slug: 'breathing-anxiety-relief',
+    title: 'How Breathing Exercises Can Calm Your Anxious Mind',
+    description: 'Discover science-backed breathing techniques that can help reduce anxiety and improve mental well-being for students and professionals.',
     categories: [
-      categories.find((category) => category.slug === categorySlugs.feature),
+      categories.find((category) => category.slug === 'tutorial')
     ],
-    // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
-    // The date of the article. It's used to generate the meta date.
-    publishedAt: "2023-11-20",
+    author: authors.find((author) => author.slug === 'marc'), // Using existing author for now
+    publishedAt: '2024-03-27',
     image: {
-      // The image to display in <CardArticle /> components.
-      src: introducingSupabaseImg,
-      // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
-      urlRelative: "/blog/introducing-supabase/header.jpg",
-      alt: "Supabase and ShipFast logo combined",
+      src: placeholderImage1,
+      urlRelative: '/blog/breathing-anxiety-relief/header.png',
+      alt: 'Person practicing calming breathing technique'
     },
-    // The actual content of the article that will be shown under the <h1> title in the article page.
     content: (
       <>
         <Image
-          src={introducingSupabaseImg}
-          alt="Supabase and ShipFast logo combined"
+          src={placeholderImage1}
+          alt="Person practicing calming breathing technique"
           width={700}
           height={500}
           priority={true}
@@ -234,57 +229,193 @@ export const articles: articleType[] = [
           placeholder="blur"
         />
         <section>
-          <h2 className={styles.h2}>Introduction</h2>
+          <h2 className={styles.h2}>Understanding Anxiety in Academic and Professional Life</h2>
           <p className={styles.p}>
-            Supabase is an open-source Firebase alternative. It&apos;s a great
-            tool for building a backend for your app. It&apos;s now integrated
-            with ShipFast!
+            As a student pursuing a Master&apos;s in AI, I&apos;ve experienced firsthand the overwhelming stress and anxiety that comes with rigorous academic and professional challenges. The constant pressure to perform, meet deadlines, and excel can take a significant toll on mental health.
           </p>
         </section>
 
         <section>
-          <h3 className={styles.h3}>1. Create a supabase account</h3>
+          <h3 className={styles.h3}>The Science Behind Breathing and Anxiety</h3>
           <p className={styles.p}>
-            First, go to{" "}
-            <a href="https://supabase.com/" className="link link-primary">
-              Supabase
-            </a>{" "}
-            and create an account. It&apos;s free for up to 10,000 rows per
-            table.
-            <br />
-            Then create a new project and a new table. You can use the following
-            SQL schema:
+            Breathing exercises are more than just a relaxation technique—they&apos;re a scientifically proven method to regulate your nervous system. When we&apos;re anxious, our breathing becomes shallow and rapid, triggering the body&apos;s stress response. By practicing controlled breathing, we can activate the parasympathetic nervous system, which helps calm the mind and reduce anxiety.
           </p>
-
-          <pre className={styles.code}>
-            <code>
-              {`CREATE TABLE public.users (
-  id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
-  email text NOT NULL,
-  password text NOT NULL,
-  created_at timestamp with time zone NOT NULL DEFAULT now(),
-  updated_at timestamp with time zone NOT NULL DEFAULT now(),
-  CONSTRAINT users_pkey PRIMARY KEY (id)
-);`}
-            </code>
-          </pre>
         </section>
 
         <section>
-          <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
-          <p className={styles.p}>
-            Copy the <span className={styles.codeInline}>API URL</span> and{" "}
-            <span className={styles.codeInline}>API Key</span> from your
-            Supabase project settings and add them to your ShipFast project
-            settings. Add these files to your project:
-          </p>
-
+          <h3 className={styles.h3}>Three Proven Breathing Techniques</h3>
           <ul className={styles.ul}>
-            <li className={styles.li}>.env.local</li>
-            <li className={styles.li}>.env.production</li>
+            <li className={styles.li}>
+              <strong>4-7-8 Technique</strong>: Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds. This method helps reset your nervous system and reduce immediate stress.
+            </li>
+            <li className={styles.li}>
+              <strong>Box Breathing</strong>: Breathe in for 4 seconds, hold for 4 seconds, exhale for 4 seconds, hold for 4 seconds. Excellent for maintaining focus during high-pressure situations.
+            </li>
+            <li className={styles.li}>
+              <strong>Diaphragmatic Breathing</strong>: Focus on deep belly breathing, which helps lower heart rate and blood pressure, promoting a sense of calm.
+            </li>
           </ul>
         </section>
+
+        <section>
+          <h3 className={styles.h3}>Why I Created This App</h3>
+          <p className={styles.p}>
+            As an AI student, I wanted to create a tool that combines scientific research with practical mental health support. This app was born from my personal experiences with anxiety and the desire to provide an accessible, technology-driven solution for managing stress.
+          </p>
+        </section>
       </>
-    ),
+    )
   },
+  {
+    slug: 'breathwork-mental-performance',
+    title: 'Breathwork: Your Secret Weapon for Mental Performance',
+    description: 'Learn how strategic breathing can enhance focus, reduce stress, and improve cognitive performance for students and professionals.',
+    categories: [
+      categories.find((category) => category.slug === 'tutorial')
+    ],
+    author: authors.find((author) => author.slug === 'marc'), // Using existing author for now
+    publishedAt: '2024-04-10',
+    image: {
+      src: placeholderImage2,
+      urlRelative: '/blog/breathwork-mental-performance/header.png',
+      alt: 'Student focusing with breathing technique'
+    },
+    content: (
+      <>
+        <Image
+          src={placeholderImage2}
+          alt="Student focusing with breathing technique"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>Breathing: More Than Just Oxygen</h2>
+          <p className={styles.p}>
+            In the high-stakes world of academic research and professional development, mental performance is everything. What if I told you that the key to enhanced cognitive function might be as simple as how you breathe?
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Cognitive Benefits of Controlled Breathing</h3>
+          <p className={styles.p}>
+            Research shows that strategic breathwork can:
+          </p>
+          <ul className={styles.ul}>
+            <li className={styles.li}>Improve concentration and focus</li>
+            <li className={styles.li}>Reduce cortisol levels (stress hormone)</li>
+            <li className={styles.li}>Enhance decision-making capabilities</li>
+            <li className={styles.li}>Increase emotional regulation</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Technology Meets Mental Wellness</h3>
+          <p className={styles.p}>
+            As an AI student, I saw an opportunity to blend this app with mental health support. 
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Practical Integration</h3>
+          <p className={styles.p}>
+            Whether you&apos;re preparing for a complex coding project, studying for exams, or navigating professional challenges, consistent breathwork can be your competitive advantage.
+          </p>
+        </section>
+      </>
+    )
+  }
 ];
+// export const articles: articleType[] = [
+//   {
+//     // The unique slug to use in the URL. It's also used to generate the canonical URL.
+//     slug: "introducing-supabase",
+//     // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
+//     title: "Introducing Supabase to ShipFast",
+//     // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
+//     description:
+//       "Supabase is an open-source Firebase alternative. It's a great tool for building a backend for your app. It's now integrated with ShipFast!",
+//     // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
+//     categories: [
+//       categories.find((category) => category.slug === categorySlugs.feature),
+//     ],
+//     // The author of the article. It's used to generate a link to the author's bio page.
+//     author: authors.find((author) => author.slug === authorSlugs.marc),
+//     // The date of the article. It's used to generate the meta date.
+//     publishedAt: "2023-11-20",
+//     image: {
+//       // The image to display in <CardArticle /> components.
+//       src: introducingSupabaseImg,
+//       // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
+//       urlRelative: "/blog/introducing-supabase/header.jpg",
+//       alt: "Supabase and ShipFast logo combined",
+//     },
+//     // The actual content of the article that will be shown under the <h1> title in the article page.
+//     content: (
+//       <>
+//         <Image
+//           src={introducingSupabaseImg}
+//           alt="Supabase and ShipFast logo combined"
+//           width={700}
+//           height={500}
+//           priority={true}
+//           className="rounded-box"
+//           placeholder="blur"
+//         />
+//         <section>
+//           <h2 className={styles.h2}>Introduction</h2>
+//           <p className={styles.p}>
+//             Supabase is an open-source Firebase alternative. It&apos;s a great
+//             tool for building a backend for your app. It&apos;s now integrated
+//             with ShipFast!
+//           </p>
+//         </section>
+
+//         <section>
+//           <h3 className={styles.h3}>1. Create a supabase account</h3>
+//           <p className={styles.p}>
+//             First, go to{" "}
+//             <a href="https://supabase.com/" className="link link-primary">
+//               Supabase
+//             </a>{" "}
+//             and create an account. It&apos;s free for up to 10,000 rows per
+//             table.
+//             <br />
+//             Then create a new project and a new table. You can use the following
+//             SQL schema:
+//           </p>
+
+//           <pre className={styles.code}>
+//             <code>
+//               {`CREATE TABLE public.users (
+//   id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+//   email text NOT NULL,
+//   password text NOT NULL,
+//   created_at timestamp with time zone NOT NULL DEFAULT now(),
+//   updated_at timestamp with time zone NOT NULL DEFAULT now(),
+//   CONSTRAINT users_pkey PRIMARY KEY (id)
+// );`}
+//             </code>
+//           </pre>
+//         </section>
+
+//         <section>
+//           <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
+//           <p className={styles.p}>
+//             Copy the <span className={styles.codeInline}>API URL</span> and{" "}
+//             <span className={styles.codeInline}>API Key</span> from your
+//             Supabase project settings and add them to your ShipFast project
+//             settings. Add these files to your project:
+//           </p>
+
+//           <ul className={styles.ul}>
+//             <li className={styles.li}>.env.local</li>
+//             <li className={styles.li}>.env.production</li>
+//           </ul>
+//         </section>
+//       </>
+//     ),
+//   },
+// ];
