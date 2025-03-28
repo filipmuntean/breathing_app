@@ -20,8 +20,9 @@ export async function POST(req: NextRequest) {
   await connectMongo();
 
   const body = await req.text();
-
-  const signature = headers().get("stripe-signature");
+  const headersList = await headers();
+  const signature = headersList.get("stripe-signature");
+  // const signature = headers().get("stripe-signature");
 
   let eventType;
   let event;

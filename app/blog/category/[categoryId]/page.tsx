@@ -4,13 +4,16 @@ import CardCategory from "../../_assets/components/CardCategory";
 import { getSEOTags } from "@/lib/seo";
 import config from "@/config";
 
+type Params = Promise<{ categoryid: string }>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { categoryId: string };
+  params: Params;
 }) {
+  const {categoryid} = await params;
   const category = categories.find(
-    (category) => category.slug === params.categoryId
+    (category) => category.slug === categoryid
   );
 
   return getSEOTags({
@@ -23,10 +26,11 @@ export async function generateMetadata({
 export default async function Category({
   params,
 }: {
-  params: { categoryId: string };
+  params:   Params;
 }) {
+  const {categoryid} = await params;
   const category = categories.find(
-    (category) => category.slug === params.categoryId
+    (category) => category.slug === categoryid
   );
   const articlesInCategory = articles
     .filter((article) =>

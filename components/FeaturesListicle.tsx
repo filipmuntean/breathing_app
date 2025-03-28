@@ -266,7 +266,7 @@ const features: {
           {[
             "All meta tags to rank on Google",
             "OpenGraph tags to share on social media",
-            "Automated sitemap generation to fasten Google indexing",
+            "Automated generation to fasten Google indexing",
             "Structured data markup for Rich Snippets",
             "SEO-optimized UI components",
           ].map((item) => (

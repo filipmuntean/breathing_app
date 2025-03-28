@@ -4,12 +4,16 @@ import CardArticle from "../../_assets/components/CardArticle";
 import { getSEOTags } from "@/lib/seo";
 import config from "@/config";
 
+type Params = Promise<{ authorid: string }>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { authorId: string };
+  params: Params;
 }) {
-  const author = authors.find((author) => author.slug === params.authorId);
+
+  const {authorid} = await params;
+  const author = authors.find((author) => author.slug === authorid);
 
   return getSEOTags({
     title: `${author.name}, Author at ${config.appName}'s Blog`,
@@ -21,9 +25,10 @@ export async function generateMetadata({
 export default async function Author({
   params,
 }: {
-  params: { authorId: string };
+  params: Params;
 }) {
-  const author = authors.find((author) => author.slug === params.authorId);
+  const {authorid} = await params;
+  const author = authors.find((author) => author.slug === authorid);
   const articlesByAuthor = articles
     .filter((article) => article.author.slug === author.slug)
     .sort(

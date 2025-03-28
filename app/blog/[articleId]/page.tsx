@@ -6,12 +6,15 @@ import Avatar from "../_assets/components/Avatar";
 import { getSEOTags } from "@/lib/seo";
 import config from "@/config";
 
+type Params = Promise<{ articleid: string }>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { articleId: string };
+  params: Params;
 }) {
-  const article = articles.find((article) => article.slug === params.articleId);
+  const {articleid} = await params;
+  const article = articles.find((article) => article.slug === articleid);
 
   return getSEOTags({
     title: article.title,
@@ -39,13 +42,14 @@ export async function generateMetadata({
 export default async function Article({
   params,
 }: {
-  params: { articleId: string };
+  params: Params;
 }) {
-  const article = articles.find((article) => article.slug === params.articleId);
+  const {articleid} = await params;
+  const article = articles.find((article) => article.slug === articleid);
   const articlesRelated = articles
     .filter(
       (a) =>
-        a.slug !== params.articleId &&
+        a.slug !== articleid &&
         a.categories.some((c) =>
           article.categories.map((c) => c.slug).includes(c.slug)
         )
