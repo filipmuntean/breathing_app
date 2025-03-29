@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import React from "react";
-import { IoSettingsOutline } from "react-icons/io5";
+import { Settings, Loader2 } from 'lucide-react';
 
 const DEFAULT_PHASES = [
   { name: "Inhale", duration: 4 },
@@ -9,46 +8,65 @@ const DEFAULT_PHASES = [
   { name: "Exhale", duration: 4 },
 ];
 
-const Breathe: React.FC = () => {
+const VISUAL_EFFECTS = [
+  { id: 'pulse', name: 'Pulsing Glow' },
+  { id: 'particles', name: 'Floating Particles' },
+  { id: 'waves', name: 'Ripple Waves' },
+  { id: 'gradient', name: 'Color Flow' },
+];
+
+function App() {
   const [phases, setPhases] = useState(DEFAULT_PHASES);
   const [phase, setPhase] = useState(phases[0].name);
   const [count, setCount] = useState(phases[0].duration);
   const [isRunning, setIsRunning] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
+  const [selectedEffect, setSelectedEffect] = useState('pulse');
+  const [progress, setProgress] = useState(0); // percent from 0 to 100
   const countdownRef = useRef<number | null>(null);
+  const progressRef = useRef<number>(0);
+  const startTimeRef = useRef<number>(0);
 
-  // Custom durations state (allows empty values)
   const [customDurations, setCustomDurations] = useState(
-    phases.map((p) => p.duration.toString()) // Keep as strings for smooth input handling
+    phases.map((p) => p.duration.toString())
   );
 
   useEffect(() => {
     if (isRunning) {
-      if (count > 0) {
-        countdownRef.current = window.setTimeout(() => {
-          setCount((prev) => prev - 1);
-        }, 1000);
-      } else {
-        const nextIndex = (currentPhaseIndex + 1) % phases.length;
-        setCurrentPhaseIndex(nextIndex);
-        setPhase(phases[nextIndex].name);
-        setCount(phases[nextIndex].duration);
-      }
+      startTimeRef.current = Date.now() - ((phases[currentPhaseIndex].duration - count) * 1000);
+      
+      countdownRef.current = window.setInterval(() => {
+        const elapsedTime = (Date.now() - startTimeRef.current) / 1000;
+        const currentPhaseDuration = phases[currentPhaseIndex].duration;
+        
+        if (elapsedTime >= currentPhaseDuration) {
+          // Time to move to next phase
+          const nextIndex = (currentPhaseIndex + 1) % phases.length;
+          setCurrentPhaseIndex(nextIndex);
+          setPhase(phases[nextIndex].name);
+          setCount(phases[nextIndex].duration);
+          startTimeRef.current = Date.now();
+        } else {
+          // Update countdown and progress
+          const remainingTime = Math.ceil(currentPhaseDuration - elapsedTime);
+          setCount(remainingTime);
+          setProgress((elapsedTime / currentPhaseDuration) * 100);
+        }
+      }, 50); // Update more frequently for smooth animation
     }
 
     return () => {
       if (countdownRef.current) {
-        clearTimeout(countdownRef.current);
+        clearInterval(countdownRef.current);
       }
     };
-  }, [count, isRunning, currentPhaseIndex, phases]);
+  }, [isRunning, currentPhaseIndex, phases]);
 
-  // Save new settings from modal
   const saveSettings = () => {
     const updatedPhases = phases.map((phase, index) => ({
       ...phase,
-      duration: Number(customDurations[index]) || DEFAULT_PHASES[index].duration, // Fallback if empty
+      duration: Number(customDurations[index]) || DEFAULT_PHASES[index].duration,
     }));
     setPhases(updatedPhases);
     setPhase(updatedPhases[0].name);
@@ -56,63 +74,129 @@ const Breathe: React.FC = () => {
     setShowModal(false);
   };
 
-  // Reset modal durations to defaults
   const resetModalSettings = () => {
-    setCustomDurations(DEFAULT_PHASES.map((p) => p.duration.toString())); // Reset input fields
+    setCustomDurations(DEFAULT_PHASES.map((p) => p.duration.toString()));
+  };
+
+  const handleReset = () => {
+    setIsRunning(false);
+    setPhase(phases[0].name);
+    setCount(phases[0].duration);
+    setCurrentPhaseIndex(0);
+    setProgress(0);
+    startTimeRef.current = 0;
   };
 
   return (
-    <section id="breathe">
-      <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
-        {/* Main Timer UI */}
-        <div className="relative bg-white rounded-2xl shadow-2xl p-12 text-center max-w-2xl w-full">
-          
-          {/* Settings Button (⚙️) - Top Right */}
-          <button
-            onClick={() => setShowModal(true)}
-            className="absolute text-gray-600 hover:text-gray-800 text-3xl top-3 right-3"
-          >
-            <IoSettingsOutline />
-          </button>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className={`relative ${isRunning ? 'scale-100' : 'scale-95'} transition-all duration-500`}>
+        {/* Main Circle Container */}
+        <div 
+          className={`relative w-[400px] h-[400px] rounded-full transition-all duration-500 flex items-center justify-center
+            ${isRunning ? 'bg-blue-100/50' : 'bg-white/80'} backdrop-blur-sm shadow-lg
+            ${selectedEffect === 'pulse' && isRunning ? 'animate-pulse-gentle' : ''}
+            ${selectedEffect === 'gradient' && isRunning ? 'animate-gradient-flow' : ''}
+          `}
+        >
+          {/* Progress Circle */}
+          <svg className="absolute w-full h-full -rotate-90">
+            <circle
+              className="text-gray-200"
+              strokeWidth="4"
+              stroke="currentColor"
+              fill="transparent"
+              r="190"
+              cx="200"
+              cy="200"
+            />
+            <circle
+              className="text-blue-500 transition-[stroke-dashoffset] duration-75 ease-linear"
+              strokeWidth="4"
+              strokeDasharray={1194}
+              strokeDashoffset={1194 - (progress / 100) * 1194}
+              strokeLinecap="round"
+              stroke="currentColor"
+              fill="transparent"
+              r="190"
+              cx="200"
+              cy="200"
+            />
+          </svg>
 
-          {/* Breathing Timer */}
-          <h1 className="text-5xl font-bold mb-8">{phase}</h1>
-          <p className="text-8xl font-bold mb-10 text-blue-600">{count}</p>
+          {/* Visual Effects */}
+          {selectedEffect === 'particles' && isRunning && (
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="particles-container">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="particle"
+                    style={{
+                      '--delay': `${i * 0.5}s`,
+                      '--position': `${i * 18}deg`
+                    } as React.CSSProperties}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
 
-          {/* Start & Reset Buttons */}
-          <div className="flex justify-center gap-6">
-            <button
-              onClick={() => setIsRunning(!isRunning)}
-              className={`px-8 py-4 text-2xl rounded-xl font-semibold transition-colors ${
-                isRunning ? "bg-yellow-500 hover:bg-yellow-600" : "bg-green-500 hover:bg-green-600"
-              } text-white`}
-            >
-              {isRunning ? "Pause" : "Start"}
-            </button>
-            <button
-              onClick={() => {
-                setIsRunning(false);
-                setPhase(phases[0].name);
-                setCount(phases[0].duration);
-                setCurrentPhaseIndex(0);
-              }}
-              className="px-8 py-4 text-2xl rounded-xl font-semibold bg-gray-500 hover:bg-gray-600 text-white transition-colors"
-            >
-              Reset
-            </button>
+          {selectedEffect === 'waves' && isRunning && (
+            <div className="absolute inset-0">
+              <div className="ripple-effect" />
+              <div className="ripple-effect" style={{ animationDelay: '1s' }} />
+              <div className="ripple-effect" style={{ animationDelay: '2s' }} />
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="text-center z-10">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">{phase}</h2>
+            <p className="text-6xl font-bold text-blue-600">{count}</p>
           </div>
         </div>
 
-        {/* Modal Popup for Settings */}
-        {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-              <h2 className="text-2xl font-bold mb-4">Settings</h2>
-              
-              {/* Input Fields for Custom Durations */}
+        {/* Controls */}
+        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex gap-4">
+          <button
+            onClick={() => setIsRunning(!isRunning)}
+            className={`px-6 py-3 rounded-full font-semibold transition-all
+              ${isRunning 
+                ? 'bg-yellow-500 hover:bg-yellow-600 text-white' 
+                : 'bg-blue-500 hover:bg-blue-600 text-white'
+              }`}
+          >
+            {isRunning ? 'Pause' : 'Start'}
+          </button>
+          <button
+            onClick={handleReset}
+            className="px-6 py-3 rounded-full font-semibold bg-gray-500 hover:bg-gray-600 text-white transition-all"
+          >
+            Reset
+          </button>
+        </div>
+
+        {/* Settings Button */}
+        <button
+          onClick={() => setShowModal(true)}
+          className="absolute -top-4 -right-4 p-2 text-gray-600 hover:text-gray-800 bg-white rounded-full shadow-md transition-transform hover:scale-110"
+        >
+          <Settings className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Settings Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full m-4">
+            <h2 className="text-2xl font-bold mb-6">Breathing Settings</h2>
+
+            {/* Duration Settings */}
+            <div className="space-y-4 mb-8">
+              <h3 className="text-lg font-semibold mb-2">Phase Durations</h3>
               {phases.map((phase, index) => (
-                <div key={index} className="mb-4">
-                  <label className="block text-lg mb-2">{phase.name} Duration:</label>
+                <div key={index} className="flex items-center gap-4">
+                  <label className="w-24 text-gray-700">{phase.name}:</label>
                   <input
                     type="number"
                     min="1"
@@ -120,48 +204,62 @@ const Breathe: React.FC = () => {
                     value={customDurations[index]}
                     onChange={(e) => {
                       const newDurations = [...customDurations];
-                      newDurations[index] = e.target.value; // Allow empty values
+                      newDurations[index] = e.target.value;
                       setCustomDurations(newDurations);
                     }}
-                    onBlur={(e) => {
-                      if (e.target.value === "") {
-                        const newDurations = [...customDurations];
-                        newDurations[index] = DEFAULT_PHASES[index].duration.toString();
-                        setCustomDurations(newDurations);
-                      }
-                    }}
-                    className="w-full p-2 border rounded-md text-lg"
+                    className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
+                  <span className="text-gray-500">sec</span>
                 </div>
               ))}
+            </div>
 
-              {/* Modal Buttons: Save, Reset, Cancel */}
-              <div className="flex justify-end gap-4 mt-6">
-                <button
-                  onClick={resetModalSettings}
-                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
-                >
-                  Reset
-                </button>
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-black rounded-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={saveSettings}
-                  className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md"
-                >
-                  Save
-                </button>
+            {/* Visual Effect Selection */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold mb-2">Visual Effect</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {VISUAL_EFFECTS.map((effect) => (
+                  <button
+                    key={effect.id}
+                    onClick={() => setSelectedEffect(effect.id)}
+                    className={`p-3 rounded-lg border-2 transition-all
+                      ${selectedEffect === effect.id
+                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        : 'border-gray-200 hover:border-blue-200'
+                      }`}
+                  >
+                    {effect.name}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
-};
 
-export default Breathe;
+            {/* Modal Actions */}
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={resetModalSettings}
+                className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+              >
+                Reset
+              </button>
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={saveSettings}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
