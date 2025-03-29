@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { Settings, Loader2 } from 'lucide-react';
+import React from "react";
 
 const DEFAULT_PHASES = [
   { name: "Inhale", duration: 4 },
@@ -15,7 +16,7 @@ const VISUAL_EFFECTS = [
   { id: 'gradient', name: 'Color Flow' },
 ];
 
-function App() {
+const Breathe: React.FC = () => {
   const [phases, setPhases] = useState(DEFAULT_PHASES);
   const [phase, setPhase] = useState(phases[0].name);
   const [count, setCount] = useState(phases[0].duration);
@@ -23,9 +24,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
   const [selectedEffect, setSelectedEffect] = useState('pulse');
-  const [progress, setProgress] = useState(0); // percent from 0 to 100
+  const [progress, setProgress] = useState(0); 
   const countdownRef = useRef<number | null>(null);
-  const progressRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
 
   const [customDurations, setCustomDurations] = useState(
@@ -262,4 +262,4 @@ function App() {
   );
 }
 
-export default App;
+export default Breathe;
