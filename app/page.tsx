@@ -11,6 +11,7 @@ import CTA from "@/components/CTA";
 import About from '@/components/About';
 import Footer from "@/components/Footer";
 import Head from 'next/head';
+import Progress from '@/components/Progress';
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <main>
       
         <Suspense>
+        <Progress />
         <Breathe />
         </Suspense>
         {/* <WithWithout /> */}

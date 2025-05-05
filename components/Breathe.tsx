@@ -1,7 +1,8 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import { Settings, Loader2 } from 'lucide-react';
-import React from "react";
+import { useSession } from "next-auth/react";
 
 const DEFAULT_PHASES = [
   { name: "Inhale", duration: 4 },
@@ -17,6 +18,7 @@ const VISUAL_EFFECTS = [
 ];
 
 const Breathe: React.FC = () => {
+  const { data: session, status } = useSession();
   const [phases, setPhases] = useState(DEFAULT_PHASES);
   const [phase, setPhase] = useState(phases[0].name);
   const [count, setCount] = useState(phases[0].duration);
@@ -24,22 +26,48 @@ const Breathe: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
   const [selectedEffect, setSelectedEffect] = useState('pulse');
-  const [progress, setProgress] = useState(0); 
+  const [progress, setProgress] = useState(0);
+  const [sessionDuration, setSessionDuration] = useState(0);
+  const [isSaving, setIsSaving] = useState(false);
+  
   const countdownRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
+  const sessionStartTimeRef = useRef<number>(0);
 
   const [customDurations, setCustomDurations] = useState(
     phases.map((p) => p.duration.toString())
   );
 
+  // Track session duration when breathing is active
+  useEffect(() => {
+    let durationTimer: number | null = null;
+    
+    if (isRunning) {
+      if (sessionStartTimeRef.current === 0) {
+        sessionStartTimeRef.current = Date.now();
+      }
+      
+      durationTimer = window.setInterval(() => {
+        const elapsed = Math.floor((Date.now() - sessionStartTimeRef.current) / 1000);
+        setSessionDuration(elapsed);
+      }, 1000);
+    }
+
+    return () => {
+      if (durationTimer) {
+        clearInterval(durationTimer);
+      }
+    };
+  }, [isRunning]);
+
   useEffect(() => {
     if (isRunning) {
       startTimeRef.current = Date.now() - ((phases[currentPhaseIndex].duration - count) * 1000);
-      
+
       countdownRef.current = window.setInterval(() => {
         const elapsedTime = (Date.now() - startTimeRef.current) / 1000;
         const currentPhaseDuration = phases[currentPhaseIndex].duration;
-        
+
         if (elapsedTime >= currentPhaseDuration) {
           // Time to move to next phase
           const nextIndex = (currentPhaseIndex + 1) % phases.length;
@@ -63,6 +91,44 @@ const Breathe: React.FC = () => {
     };
   }, [isRunning, currentPhaseIndex, phases]);
 
+  // Save session to database when stopped
+  const handleStop = async () => {
+    setIsRunning(false);
+    
+    // Only save if session was longer than 5 seconds and user is authenticated
+    if (sessionDuration > 5 && status === "authenticated" && session?.user) {
+      try {
+        setIsSaving(true);
+        
+        const response = await fetch('/api/user/breathing-sessions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            duration: sessionDuration,
+            phases: phases,
+            completed: true
+          }),
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to save session');
+        }
+        
+        console.log('Session saved successfully');
+      } catch (error) {
+        console.error('Error saving breathing session:', error);
+      } finally {
+        setIsSaving(false);
+      }
+    }
+    
+    // Reset session tracking
+    sessionStartTimeRef.current = 0;
+    setSessionDuration(0);
+  };
+
   const saveSettings = () => {
     const updatedPhases = phases.map((phase, index) => ({
       ...phase,
@@ -79,7 +145,10 @@ const Breathe: React.FC = () => {
   };
 
   const handleReset = () => {
-    setIsRunning(false);
+    if (isRunning) {
+      handleStop();
+    }
+    
     setPhase(phases[0].name);
     setCount(phases[0].duration);
     setCurrentPhaseIndex(0);
@@ -91,11 +160,10 @@ const Breathe: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <div className={`relative ${isRunning ? 'scale-100' : 'scale-95'} transition-all duration-500`}>
         {/* Main Circle Container */}
-        <div 
-          className={`relative w-[400px] h-[400px] rounded-full transition-all duration-500 flex items-center justify-center
-            ${isRunning ? 'bg-blue-100/50' : 'bg-white/80'} backdrop-blur-sm shadow-lg
-            ${selectedEffect === 'pulse' && isRunning ? 'animate-pulse-gentle' : ''}
-            ${selectedEffect === 'gradient' && isRunning ? 'animate-gradient-flow' : ''}
+        <div
+          className={`relative w-[400px] h-[400px] rounded-full transition-all duration-500 flex items-center justify-center ${isRunning ? 'bg-blue-100/50' : 'bg-white/80'} backdrop-blur-sm shadow-lg
+          ${selectedEffect === 'pulse' && isRunning ? 'animate-pulse-gentle' : ''}
+          ${selectedEffect === 'gradient' && isRunning ? 'animate-gradient-flow' : ''}
           `}
         >
           {/* Progress Circle */}
@@ -153,24 +221,42 @@ const Breathe: React.FC = () => {
           <div className="text-center z-10">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">{phase}</h2>
             <p className="text-6xl font-bold text-blue-600">{count}</p>
+            {sessionDuration > 0 && (
+              <p className="text-sm text-gray-600 mt-2">
+                Session: {Math.floor(sessionDuration / 60)}m {sessionDuration % 60}s
+              </p>
+            )}
           </div>
         </div>
 
         {/* Controls */}
         <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex gap-4">
           <button
-            onClick={() => setIsRunning(!isRunning)}
-            className={`px-6 py-3 rounded-full font-semibold transition-all
-              ${isRunning 
-                ? 'bg-yellow-500 hover:bg-yellow-600 text-white' 
+            onClick={() => isRunning ? handleStop() : setIsRunning(true)}
+            disabled={isSaving}
+            className={`px-6 py-3 rounded-full font-semibold transition-all ${
+              isRunning
+                ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
                 : 'bg-blue-500 hover:bg-blue-600 text-white'
-              }`}
+            } ${isSaving ? 'opacity-70 cursor-not-allowed' : ''}`}
           >
-            {isRunning ? 'Pause' : 'Start'}
+            {isSaving ? (
+              <span className="flex items-center">
+                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                Saving...
+              </span>
+            ) : isRunning ? (
+              'Pause'
+            ) : (
+              'Start'
+            )}
           </button>
           <button
             onClick={handleReset}
-            className="px-6 py-3 rounded-full font-semibold bg-gray-500 hover:bg-gray-600 text-white transition-all"
+            disabled={isSaving}
+            className={`px-6 py-3 rounded-full font-semibold bg-gray-500 hover:bg-gray-600 text-white transition-all ${
+              isSaving ? 'opacity-70 cursor-not-allowed' : ''
+            }`}
           >
             Reset
           </button>
@@ -222,11 +308,11 @@ const Breathe: React.FC = () => {
                   <button
                     key={effect.id}
                     onClick={() => setSelectedEffect(effect.id)}
-                    className={`p-3 rounded-lg border-2 transition-all
-                      ${selectedEffect === effect.id
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      selectedEffect === effect.id
                         ? 'border-blue-500 bg-blue-50 text-blue-700'
                         : 'border-gray-200 hover:border-blue-200'
-                      }`}
+                    }`}
                   >
                     {effect.name}
                   </button>
@@ -260,6 +346,6 @@ const Breathe: React.FC = () => {
       )}
     </div>
   );
-}
+};
 
 export default Breathe;
