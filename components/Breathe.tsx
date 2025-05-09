@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Settings, Loader2 } from 'lucide-react';
 import { useSession } from "next-auth/react";
 
