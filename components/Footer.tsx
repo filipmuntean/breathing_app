@@ -8,7 +8,7 @@ import logo from "@/app/icon.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-blue-50 to-purple-50 border-t border-base-content/10">
+    <footer className="bg-[#fefae0] text-[#283618] border-t border-base-content/10">
       <div className="max-w-7xl mx-auto px-8 py-24">
         <div className=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
@@ -101,6 +101,10 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
+                
+                <Link href="/about" className="link link-hover">
+                  About
+                </Link>
                 <Link href="/tos" className="link link-hover">
                   Terms of services
                 </Link>

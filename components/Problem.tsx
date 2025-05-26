@@ -41,10 +41,12 @@ const Step = ({ emoji, text }: { emoji: string; text: string }) => {
 // - Features: "ShipFast has user auth, Stripe, emails all set up for you"
 const Problem = () => {
   return (
-    <section className="bg-neutral text-neutral-content">
+    <section className="bg-[#fefae0] text-[#283618]">
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center" id = "motivation">
         <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-          Daily stress and anxiety can overwhelm your life.
+         <p className="text-20xl">
+          Daily <span className="text-[#bc6c25]">stress</span> and <span className="text-[#bc6c25]">anxiety</span> can overwhelm your life.
+        </p>
         </h2>
         <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
           In today&#39;s fast-paced world, constant pressures from work and life leave many of us feeling drained. Finding a moment of calm is essential for your well-being.

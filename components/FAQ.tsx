@@ -56,7 +56,7 @@ const faqList: FAQItemProps[] = [
     question: "I have another question",
     answer: (
       <div className="space-y-2 leading-relaxed">
-        If you have any additional questions or need further support, feel free to contact our team by email.
+        If you have any additional questions or need further support, feel free to contact support.
       </div>
     ),
   },
@@ -125,7 +125,7 @@ const FaqItem = ({ item }: { item: FAQItemProps }) => {
 
 const FAQ = () => {
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-purple-50" id="faq">
+    <section className="bg-[#fefae0] text-[#283618]" id="faq">
       <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
         <div className="flex flex-col text-left basis-1/2">
           <p className="inline-block font-semibold text-primary mb-4">FAQ</p>

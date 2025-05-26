@@ -43,7 +43,7 @@ const ButtonSignin = ({
             height={24}
           />
         ) : (
-          <span className="w-6 h-6 bg-base-300 flex justify-center items-center rounded-full shrink-0">
+          <span className="w-6 h-6 bg-[#606c38] flex justify-center items-center rounded-full shrink-0">
             {session.user?.name?.charAt(0) || session.user?.email?.charAt(0)}
           </span>
         )}
@@ -54,7 +54,7 @@ const ButtonSignin = ({
 
   return (
     <button
-      className={`btn ${extraStyle ? extraStyle : ""}`}
+      className={`btn bg-[#dda15e] text-[#283618] hover:bg-[#c98f4f] hover:text-[#606c38] ${extraStyle ? extraStyle : ""} `}
       onClick={handleClick}
     >
       {text}

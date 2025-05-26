@@ -112,7 +112,7 @@ const Progress: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full p-6 bg-white rounded-xl shadow-md">
+      <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md">
         <div className="flex items-center justify-center h-40">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
         </div>
@@ -122,9 +122,9 @@ const Progress: React.FC = () => {
 
   if (status !== "authenticated") {
     return (
-      <div className="w-full p-6 bg-white rounded-xl shadow-md">
+      <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
         <div className="flex flex-col items-center justify-center space-y-4 text-center h-40">
-          <AlertCircle className="w-12 h-12 text-blue-500" />
+          <AlertCircle className="w-12 h-12" />
           <div>
             <h3 className="text-lg font-semibold text-gray-800">Sign in to track your progress</h3>
             <p className="text-gray-600">Your breathing session data will be saved and visualized here</p>
@@ -135,7 +135,7 @@ const Progress: React.FC = () => {
   }
 
   return (
-    <div className="w-full p-6 bg-white rounded-xl shadow-md">
+    <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-gray-800">Your Breathing Journey</h2>
         <div className="flex items-center space-x-2 text-blue-600">
