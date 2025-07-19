@@ -28,23 +28,23 @@ export const categories: categoryType[] = [
     // The slug to use in the URL, from the categorySlugs object above.
     slug: categorySlugs.feature,
     // The title to display in the category title (h1), the category badge, the category filter, and more. Less than 60 characters.
-    title: "New Features",
+    title: "App Updates",
     // A short version of the title above, to display in small components like badges. 1 or 2 words
-    titleShort: "Features",
+    titleShort: "Updates",
     // The description of the category to display on the category page. Up to 160 characters.
     description:
-      "Here are the latest features we've added to ShipFast. I'm constantly improving our product to help you ship faster.",
+      "Latest improvements and new features added to Just Breathe to enhance your mindfulness and breathing practice experience.",
     // A short version of the description above, only displayed in the <Header /> on mobile. Up to 60 characters.
-    descriptionShort: "Latest features added to ShipFast.",
+    descriptionShort: "Latest app updates and improvements.",
   },
   {
     slug: categorySlugs.tutorial,
-    title: "How Tos & Tutorials",
-    titleShort: "Tutorials",
+    title: "Breathing Techniques & Guides",
+    titleShort: "Guides",
     description:
-      "Learn how to use ShipFast with these step-by-step tutorials. I'll show you how to ship faster and save time.",
+      "Master effective breathing techniques and mindfulness practices with our comprehensive guides designed to reduce anxiety and promote mental wellness.",
     descriptionShort:
-      "Learn how to use ShipFast with these step-by-step tutorials.",
+      "Learn breathing techniques and mindfulness practices.",
   },
 ];
 
@@ -326,96 +326,184 @@ export const articles: articleType[] = [
         </section>
       </>
     )
+  },
+  {
+    slug: 'science-of-breathing-anxiety',
+    title: 'The Science Behind How Breathing Reduces Anxiety',
+    description: 'Understanding the neurological and physiological mechanisms of how controlled breathing activates your parasympathetic nervous system to reduce anxiety.',
+    categories: [
+      categories.find((category) => category.slug === 'tutorial')
+    ],
+    author: authors.find((author) => author.slug === 'marc'),
+    publishedAt: '2024-05-15',
+    image: {
+      src: placeholderImage1,
+      urlRelative: '/blog/science-of-breathing-anxiety/header.png',
+      alt: 'Brain diagram showing breathing and anxiety pathways'
+    },
+    content: (
+      <>
+        <Image
+          src={placeholderImage1}
+          alt="Brain diagram showing breathing and anxiety pathways"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>Understanding Your Nervous System</h2>
+          <p className={styles.p}>
+            When anxiety strikes, your sympathetic nervous system activates, triggering the "fight or flight" response. This leads to rapid, shallow breathing, increased heart rate, and heightened stress hormones like cortisol.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>How Breathing Interrupts the Anxiety Cycle</h3>
+          <p className={styles.p}>
+            Controlled breathing techniques work by stimulating the vagus nerve, which activates your parasympathetic nervous system - your body's "rest and digest" mode. This physiological shift:
+          </p>
+          <ul className={styles.ul}>
+            <li className={styles.li}>Reduces cortisol and adrenaline production</li>
+            <li className={styles.li}>Lowers heart rate and blood pressure</li>
+            <li className={styles.li}>Increases GABA neurotransmitter activity for calmness</li>
+            <li className={styles.li}>Improves oxygen flow to the prefrontal cortex for better decision-making</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Evidence-Based Breathing Patterns</h3>
+          <p className={styles.p}>
+            Research shows that extending your exhale longer than your inhale is particularly effective for anxiety reduction. The 4-7-8 technique and box breathing have been clinically proven to reduce anxiety symptoms within minutes.
+          </p>
+        </section>
+      </>
+    )
+  },
+  {
+    slug: 'breathing-exercises-for-students',
+    title: 'Quick Breathing Exercises for Students During Exams',
+    description: 'Practical breathing techniques students can use to manage test anxiety, improve focus, and enhance academic performance during high-stress periods.',
+    categories: [
+      categories.find((category) => category.slug === 'tutorial')
+    ],
+    author: authors.find((author) => author.slug === 'marc'),
+    publishedAt: '2024-06-02',
+    image: {
+      src: placeholderImage2,
+      urlRelative: '/blog/breathing-exercises-students/header.png',
+      alt: 'Student practicing breathing before exam'
+    },
+    content: (
+      <>
+        <Image
+          src={placeholderImage2}
+          alt="Student practicing breathing before exam"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>Academic Stress and Its Impact</h2>
+          <p className={styles.p}>
+            As a student myself, I understand the overwhelming pressure of exams, deadlines, and academic expectations. Test anxiety affects up to 40% of students and can significantly impact performance, even when you know the material well.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>The 2-Minute Pre-Exam Routine</h3>
+          <p className={styles.p}>
+            Before any exam or presentation, try this quick sequence:
+          </p>
+          <ul className={styles.ul}>
+            <li className={styles.li}><strong>30 seconds</strong>: Slow, deep breaths to center yourself</li>
+            <li className={styles.li}><strong>60 seconds</strong>: 4-7-8 breathing (inhale 4, hold 7, exhale 8)</li>
+            <li className={styles.li}><strong>30 seconds</strong>: Gentle neck and shoulder rolls while breathing naturally</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>During-Exam Anxiety Management</h3>
+          <p className={styles.p}>
+            If anxiety rises during an exam, use discrete breathing techniques that won't draw attention:
+          </p>
+          <ul className={styles.ul}>
+            <li className={styles.li}>Silent box breathing while reading questions</li>
+            <li className={styles.li}>Gentle belly breathing between sections</li>
+            <li className={styles.li}>Progressive muscle relaxation starting with your feet</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Building Long-Term Resilience</h3>
+          <p className={styles.p}>
+            Regular breathing practice, even 5 minutes daily, builds your capacity to handle academic stress. Consider integrating breathing exercises into your study breaks for maximum benefit.
+          </p>
+        </section>
+      </>
+    )
+  },
+  {
+    slug: 'workplace-breathing-techniques',
+    title: 'Desk-Friendly Breathing Techniques for Work Stress',
+    description: 'Professional-appropriate breathing exercises you can do at your desk to manage workplace stress, improve focus, and maintain calm during busy workdays.',
+    categories: [
+      categories.find((category) => category.slug === 'tutorial')
+    ],
+    author: authors.find((author) => author.slug === 'marc'),
+    publishedAt: '2024-06-20',
+    image: {
+      src: placeholderImage1,
+      urlRelative: '/blog/workplace-breathing-techniques/header.png',
+      alt: 'Professional at desk practicing breathing'
+    },
+    content: (
+      <>
+        <Image
+          src={placeholderImage1}
+          alt="Professional at desk practicing breathing"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>The Modern Workplace Stress Epidemic</h2>
+          <p className={styles.p}>
+            Workplace stress has reached unprecedented levels, with 83% of workers experiencing daily work-related stress. Deadlines, meetings, and constant connectivity create a perfect storm for anxiety and burnout.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Discrete Desk Breathing Techniques</h3>
+          <p className={styles.p}>
+            These techniques can be practiced without anyone knowing:
+          </p>
+          <ul className={styles.ul}>
+            <li className={styles.li}><strong>Email Breathing</strong>: Take 3 deep breaths before opening each email</li>
+            <li className={styles.li}><strong>Meeting Prep Breathing</strong>: 2-minute box breathing before joining calls</li>
+            <li className={styles.li}><strong>Transition Breathing</strong>: Brief breathing reset between tasks</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>The Productivity-Calm Connection</h3>
+          <p className={styles.p}>
+            Regular breathing breaks don't reduce productivity—they enhance it. Studies show that employees who practice mindfulness techniques report 28% less stress and 20% better focus.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>Creating Breathing Habits at Work</h3>
+          <p className={styles.p}>
+            Set phone reminders for breathing breaks, use the Pomodoro Technique with breathing intervals, or practice breathing while waiting for computers to load. Small, consistent practices compound into significant stress relief.
+          </p>
+        </section>
+      </>
+    )
   }
 ];
-// export const articles: articleType[] = [
-//   {
-//     // The unique slug to use in the URL. It's also used to generate the canonical URL.
-//     slug: "introducing-supabase",
-//     // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
-//     title: "Introducing Supabase to ShipFast",
-//     // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
-//     description:
-//       "Supabase is an open-source Firebase alternative. It's a great tool for building a backend for your app. It's now integrated with ShipFast!",
-//     // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
-//     categories: [
-//       categories.find((category) => category.slug === categorySlugs.feature),
-//     ],
-//     // The author of the article. It's used to generate a link to the author's bio page.
-//     author: authors.find((author) => author.slug === authorSlugs.marc),
-//     // The date of the article. It's used to generate the meta date.
-//     publishedAt: "2023-11-20",
-//     image: {
-//       // The image to display in <CardArticle /> components.
-//       src: introducingSupabaseImg,
-//       // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
-//       urlRelative: "/blog/introducing-supabase/header.jpg",
-//       alt: "Supabase and ShipFast logo combined",
-//     },
-//     // The actual content of the article that will be shown under the <h1> title in the article page.
-//     content: (
-//       <>
-//         <Image
-//           src={introducingSupabaseImg}
-//           alt="Supabase and ShipFast logo combined"
-//           width={700}
-//           height={500}
-//           priority={true}
-//           className="rounded-box"
-//           placeholder="blur"
-//         />
-//         <section>
-//           <h2 className={styles.h2}>Introduction</h2>
-//           <p className={styles.p}>
-//             Supabase is an open-source Firebase alternative. It&apos;s a great
-//             tool for building a backend for your app. It&apos;s now integrated
-//             with ShipFast!
-//           </p>
-//         </section>
-
-//         <section>
-//           <h3 className={styles.h3}>1. Create a supabase account</h3>
-//           <p className={styles.p}>
-//             First, go to{" "}
-//             <a href="https://supabase.com/" className="link link-primary">
-//               Supabase
-//             </a>{" "}
-//             and create an account. It&apos;s free for up to 10,000 rows per
-//             table.
-//             <br />
-//             Then create a new project and a new table. You can use the following
-//             SQL schema:
-//           </p>
-
-//           <pre className={styles.code}>
-//             <code>
-//               {`CREATE TABLE public.users (
-//   id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
-//   email text NOT NULL,
-//   password text NOT NULL,
-//   created_at timestamp with time zone NOT NULL DEFAULT now(),
-//   updated_at timestamp with time zone NOT NULL DEFAULT now(),
-//   CONSTRAINT users_pkey PRIMARY KEY (id)
-// );`}
-//             </code>
-//           </pre>
-//         </section>
-
-//         <section>
-//           <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
-//           <p className={styles.p}>
-//             Copy the <span className={styles.codeInline}>API URL</span> and{" "}
-//             <span className={styles.codeInline}>API Key</span> from your
-//             Supabase project settings and add them to your ShipFast project
-//             settings. Add these files to your project:
-//           </p>
-
-//           <ul className={styles.ul}>
-//             <li className={styles.li}>.env.local</li>
-//             <li className={styles.li}>.env.production</li>
-//           </ul>
-//         </section>
-//       </>
-//     ),
-//   },
-// ];

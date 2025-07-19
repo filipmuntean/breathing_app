@@ -26,12 +26,21 @@ const Hero = () => {
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
           Find Your Calm, One Breath at a Time
         </h1>
-        <p className="text-lg opacity-80 leading-relaxed">
-          {/* Our guided breathing exercises help reduce anxiety and promote mindfulness. Take a deep breath and discover the power of calm. */}
+        <p className="text-lg opacity-80 leading-relaxed mb-6">
+          Our evidence-based breathing exercises are scientifically proven to reduce anxiety, lower stress hormones, and activate your body's natural relaxation response. Whether you're dealing with work pressure, academic stress, or daily overwhelm, guided breathwork can help you find immediate calm and build long-term resilience.
         </p>
-        {/* <ButtonLead extraStyle="!max-w-none !w-full" /> */}
-        {/* <GetStarted path="/#breathe" extraStyle="!max-w-none !w-full" /> */}
-        {/* <TestimonialsAvatars priority={true} /> */}
+        
+        <div className="bg-base-200 rounded-lg p-6 mb-6">
+          <h3 className="font-bold text-lg mb-3">Why Breathing Works for Anxiety:</h3>
+          <ul className="text-left space-y-2">
+            <li>• <strong>Activates parasympathetic nervous system</strong> - Your body's "rest and digest" mode</li>
+            <li>• <strong>Reduces cortisol levels</strong> - The primary stress hormone</li>
+            <li>• <strong>Increases oxygen flow to the brain</strong> - Improving focus and decision-making</li>
+            <li>• <strong>Stimulates the vagus nerve</strong> - Promoting calm and emotional regulation</li>
+          </ul>
+        </div>
+        <GetStarted path="/#breathe" extraStyle="!max-w-none !w-full" />
+        <TestimonialsAvatars priority={true} />
       </div>
       {/* <div className="lg:w-full">
         <Image

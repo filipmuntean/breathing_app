@@ -5,6 +5,7 @@ import BadgeCategory from "../_assets/components/BadgeCategory";
 import Avatar from "../_assets/components/Avatar";
 import { getSEOTags } from "@/lib/seo";
 import config from "@/config";
+import AdSense from "@/components/AdSense";
 
 type Params = Promise<{ articleid: string }>;
 
@@ -179,6 +180,14 @@ export default async function Article({
           {/* ARTICLE CONTENT */}
           <section className="w-full max-md:pt-4 md:pr-20 space-y-12 md:space-y-20">
             {article.content}
+            
+            {/* AdSense Ad */}
+            <div className="my-8 flex justify-center">
+              <AdSense 
+                adSlot="4225636729"
+                style={{ display: 'block', width: '100%', maxWidth: '728px', height: '90px' }}
+              />
+            </div>
           </section>
         </div>
       </article>

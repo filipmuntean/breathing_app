@@ -3,6 +3,7 @@ import CardArticle from "./_assets/components/CardArticle";
 import CardCategory from "./_assets/components/CardCategory";
 import config from "@/config";
 import { getSEOTags } from "@/lib/seo";
+import AdSense from "@/components/AdSense";
 
 export const metadata = getSEOTags({
   title: `${config.appName} Blog`,
@@ -24,8 +25,7 @@ export default async function Blog() {
           The {config.appName} Blog
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          Learn how to ship your startup in days, not weeks. And get the latest
-          updates about the boilerplate
+          Discover evidence-based breathing techniques, mindfulness practices, and mental health insights to help you manage anxiety and find your calm.
         </p>
       </section>
 
@@ -37,6 +37,14 @@ export default async function Blog() {
             isImagePriority={i <= 2}
           />
         ))}
+      </section>
+
+      {/* AdSense Ad */}
+      <section className="my-8 flex justify-center">
+        <AdSense 
+          adSlot="4225636729"
+          style={{ display: 'block', width: '100%', maxWidth: '728px', height: '90px' }}
+        />
       </section>
 
       <section>

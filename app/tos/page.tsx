@@ -12,15 +12,15 @@ import config from "@/config";
 // You are an excellent lawyer.
 
 // I need your help to write a simple Terms & Services for my website. Here is some context:
-// - Website: https://inha.le
-// - Name: Breathing App for Anxiety
+// - Website: https://justbreathe.baby
+// - Name: Just Breathe - Breathing App for Anxiety
 // - Contact information: filipmorris@duck.com
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - Ownership: when buying a package, users can download code to create apps. They own the code but they do not have the right to resell it. They can ask for a full refund within 7 day after the purchase.
-// - User data collected: name, email and payment information
+// - Description: A breathing app designed to help reduce anxiety through guided breathing exercises
+// - Ownership: Free app for personal use
+// - User data collected: name, email for login and progress tracking
 // - Non-personal data collection: web cookies
-// - Link to privacy-policy: https://inha.le/privacy-policy
-// - Governing Law: The N
+// - Link to privacy-policy: https://justbreathe.baby/privacy-policy
+// - Governing Law: The Netherlands
 // - Updates to the Terms: users will be updated by email
 
 // Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
