@@ -6,8 +6,8 @@ import { useSession } from "next-auth/react";
 
 const DEFAULT_PHASES = [
   { name: "Inhale", duration: 4 },
-  { name: "Hold", duration: 4 },
-  { name: "Exhale", duration: 4 },
+  { name: "Hold", duration: 7 },
+  { name: "Exhale", duration: 8 },
 ];
 
 const VISUAL_EFFECTS = [
@@ -152,30 +152,31 @@ const Breathe: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#fefae0] text-[#283618]">
-      <div className={`relative ${isRunning ? "scale-100" : "scale-95"} transition-all duration-500`}>
-        <div className={`relative w-[400px] h-[400px] rounded-full transition-all duration-500 flex items-center justify-center
+    <div className="flex flex-col items-center justify-center py-8 bg-[#fefae0] text-[#283618]">
+      <div className="relative flex items-center justify-center gap-8">
+        <div className={`relative ${isRunning ? "scale-100" : "scale-95"} transition-all duration-500`}>
+        <div className={`relative w-[250px] h-[250px] rounded-full transition-all duration-500 flex items-center justify-center
           ${isRunning ? "bg-[#dda15e]/30" : "bg-white/80"} backdrop-blur-sm shadow-lg
           ${selectedEffect === "pulse" && isRunning ? "animate-pulse-gentle" : ""}
           ${selectedEffect === "gradient" && isRunning ? "animate-gradient-flow" : ""}`}>
           <svg className="absolute w-full h-full -rotate-90">
-            <circle className="text-gray-200" strokeWidth="4" stroke="currentColor" fill="transparent" r="190" cx="200" cy="200" />
+            <circle className="text-gray-200" strokeWidth="3" stroke="currentColor" fill="transparent" r="115" cx="125" cy="125" />
             <circle className="text-[#bc6c25] transition-[stroke-dashoffset] duration-75 ease-linear"
-              strokeWidth="4"
-              strokeDasharray={1194}
-              strokeDashoffset={1194 - (progress / 100) * 1194}
+              strokeWidth="3"
+              strokeDasharray={723}
+              strokeDashoffset={723 - (progress / 100) * 723}
               strokeLinecap="round"
               stroke="currentColor"
               fill="transparent"
-              r="190"
-              cx="200"
-              cy="200"
+              r="115"
+              cx="125"
+              cy="125"
             />
           </svg>
 
           <div className="text-center z-10">
-            <h2 className="text-4xl font-bold mb-4">{phase}</h2>
-            <p className="text-6xl font-bold text-[#bc6c25]">{count}</p>
+            <h2 className="text-xl font-bold mb-1">{phase}</h2>
+            <p className="text-3xl font-bold text-[#bc6c25]">{count}</p>
             {sessionDuration > 0 && (
               <p className="text-sm mt-2">
                 Session: {Math.floor(sessionDuration / 60)}m {sessionDuration % 60}s
@@ -184,7 +185,7 @@ const Breathe: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 flex gap-4">
+        <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 flex gap-3">
           <button
             onClick={() => isRunning ? handleStop() : setIsRunning(true)}
             disabled={isSaving}
@@ -217,6 +218,21 @@ const Breathe: React.FC = () => {
         >
           <Settings className="w-6 h-6" />
         </button>
+        </div>
+
+        {/* Embed Widget Button */}
+        <div className="flex flex-col items-center space-y-3">
+          <div className="text-center">
+            <h3 className="text-sm font-medium text-[#283618] mb-1">Like this widget?</h3>
+            <p className="text-xs text-gray-600">Add it to your website</p>
+          </div>
+          <a 
+            href="/embed" 
+            className="btn btn-sm bg-[#dda15e] text-[#283618] hover:bg-[#c98f4f] hover:text-[#606c38] transition-all duration-200"
+          >
+            Get Embed Code
+          </a>
+        </div>
       </div>
 
       {showModal && (

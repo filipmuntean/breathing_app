@@ -15,6 +15,14 @@ export async function generateMetadata({
   const {authorid} = await params;
   const author = authors.find((author) => author.slug === authorid);
 
+  if (!author) {
+    return getSEOTags({
+      title: `Author Not Found - ${config.appName}'s Blog`,
+      description: `The requested author could not be found.`,
+      canonicalUrlRelative: `/blog/author/${authorid}`,
+    });
+  }
+
   return getSEOTags({
     title: `${author.name}, Author at ${config.appName}'s Blog`,
     description: `${author.name}, Author at ${config.appName}'s Blog`,
@@ -29,8 +37,25 @@ export default async function Author({
 }) {
   const {authorid} = await params;
   const author = authors.find((author) => author.slug === authorid);
+  
+  if (!author) {
+    return (
+      <div className="max-w-3xl mx-auto text-center mt-12 mb-24">
+        <h1 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-4">
+          Author Not Found
+        </h1>
+        <p className="text-lg text-base-content/80 mb-8">
+          The author you're looking for doesn't exist or may have been removed.
+        </p>
+        <a href="/blog" className="btn btn-primary">
+          Back to Blog
+        </a>
+      </div>
+    );
+  }
+
   const articlesByAuthor = articles
-    .filter((article) => article.author.slug === author.slug)
+    .filter((article) => article.author?.slug === author.slug)
     .sort(
       (a, b) =>
         new Date(b.publishedAt).valueOf() - new Date(a.publishedAt).valueOf()

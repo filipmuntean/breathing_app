@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { Calendar, Clock, AlertCircle } from "lucide-react";
 
@@ -14,6 +14,7 @@ const Progress: React.FC = () => {
   const [dailyProgress, setDailyProgress] = useState<DailyProgress[]>([]);
   const [totalTime, setTotalTime] = useState({ minutes: 0, seconds: 0 });
   const [isLoading, setIsLoading] = useState(true);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   // Fetch user progress data
   useEffect(() => {
@@ -76,6 +77,15 @@ const Progress: React.FC = () => {
         })
         .finally(() => {
           setIsLoading(false);
+          // Auto-scroll to show progress and breathe components after loading
+          setTimeout(() => {
+            if (progressRef.current) {
+              progressRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }, 100);
         });
     } else {
       setIsLoading(false);
@@ -103,18 +113,18 @@ const Progress: React.FC = () => {
   const getColorClass = (seconds: number): string => {
     const percentage = (seconds / maxProgress) * 100;
     
-    if (percentage >= 80) return "bg-green-500";
-    if (percentage >= 60) return "bg-green-400";
-    if (percentage >= 40) return "bg-green-300";
-    if (percentage >= 20) return "bg-green-200";
-    return "bg-green-100";
+    if (percentage >= 80) return "bg-[#bc6c25]";
+    if (percentage >= 60) return "bg-[#dda15e]";
+    if (percentage >= 40) return "bg-[#dda15e]/80";
+    if (percentage >= 20) return "bg-[#dda15e]/60";
+    return "bg-[#dda15e]/40";
   };
 
   if (isLoading) {
     return (
-      <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md">
-        <div className="flex items-center justify-center h-40">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="w-full p-3 bg-[#fefae0] rounded-xl shadow-md">
+        <div className="flex items-center justify-center h-16">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#bc6c25]"></div>
         </div>
       </div>
     );
@@ -122,8 +132,8 @@ const Progress: React.FC = () => {
 
   if (status !== "authenticated") {
     return (
-      <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center h-40">
+      <div className="w-full p-3 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
+        <div className="flex flex-col items-center justify-center space-y-3 text-center h-16">
           <AlertCircle className="w-12 h-12" />
           <div>
             <h3 className="text-lg font-semibold text-gray-800">Sign in to track your progress</h3>
@@ -135,10 +145,10 @@ const Progress: React.FC = () => {
   }
 
   return (
-    <div className="w-full p-6 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-800">Your Breathing Journey</h2>
-        <div className="flex items-center space-x-2 text-blue-600">
+    <div ref={progressRef} className="w-full p-3 bg-[#fefae0] rounded-xl shadow-md text-[#283618]">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-base font-bold text-gray-800">Your Breathing Journey</h2>
+        <div className="flex items-center space-x-2 text-[#bc6c25]">
           <Clock className="w-5 h-5" />
           <span className="font-medium">
             Total: {totalTime.minutes} minutes {totalTime.seconds > 0 ? `${totalTime.seconds} seconds` : ''}
@@ -146,7 +156,7 @@ const Progress: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-6">
+      <div className="mb-3">
         <h3 className="text-sm font-medium text-gray-600 mb-3 flex items-center">
           <Calendar className="w-4 h-4 mr-1" />
           Last 7 Days
@@ -175,7 +185,7 @@ const Progress: React.FC = () => {
 
       <div className="text-center text-sm text-gray-600">
         <p>Taking time to breathe has given you {totalTime.minutes} minutes of relaxation this week.</p>
-        <p className="text-blue-600 font-medium mt-1">Keep practicing for greater benefits!</p>
+        <p className="text-[#bc6c25] font-medium mt-1">Keep practicing for greater benefits!</p>
       </div>
     </div>
   );

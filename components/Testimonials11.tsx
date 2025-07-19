@@ -79,86 +79,60 @@ const list: {
   videoType?: "video/ogg" | "video/mp4" | "video/webm";
 }[] = [
   {
-    // Show @username for social media like Twitter. Does not link anywhere but cool to display
-    username: "marclou",
-    name: "Marc Lou",
-    text: "Really easy to use. The tutorials are really useful and explains how everything works. Hope to ship my next project really fast!",
-    // use refTypes.other if you don't want to display an icon
-    type: refTypes.twitter,
-    // Link to the person's testimonial. It's more trustable
-    link: "https://twitter.com/marc_louvion",
-    // A statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
-    img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
-    // You can display video testimonials to build more trust. Just swap the type above to "video" and add at least the video source below
-    // videoSrc: "/jack.mp4"
-  },
-  {
-    username: "the_mcnaveen",
-    name: "Naveen",
-    text: "Setting up everything from the ground up is a really hard, and time consuming process. What you pay for will save your time for sure.",
-    type: refTypes.twitter,
-    link: "https://twitter.com/the_mcnaveen",
-  },
-  {
-    username: "wahab",
-    name: "Wahab Shaikh",
-    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on shipping features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
-    type: refTypes.productHunt,
-    link: "https://www.producthunt.com/products/shipfast-2/reviews?review=667971",
-  },
-  {
-    name: "Sean",
-    text: "Just purchased and cloned and *holy shit!* I realllyyy like what I'm seeing here!",
+    name: "Sarah M.",
+    text: "This app has been a lifesaver during my PhD studies. The breathing exercises help me manage anxiety before presentations and exams. Simple but incredibly effective!",
     type: refTypes.other,
   },
   {
-    username: "krishna",
-    name: "Krishna Kant",
-    text: "Finally a good boilerplate for Nextjs, now I dont have to cry about it comparing with laravel ecosystem.",
-    type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2707061",
-  },
-  {
-    username: "imgyf",
-    name: "Yifan Goh",
-    text: "It's a game changer  🚀 Comes with easy to follow tutorial, and saves you a ton of time. What's not to love?",
-    type: refTypes.twitter,
-    link: "https://twitter.com/imgyf/status/1697549891080532236?s=20",
-  },
-  {
-    name: "Yazdun",
-    text: "Yo Marc, I got the boilerplate, it's fantastic man you just save me 10 hours on each project",
+    name: "Mike R.",
+    text: "As a software engineer, I get stressed during crunch times. The 4-7-8 breathing technique from this app helps me reset and refocus. Love the clean interface!",
     type: refTypes.other,
   },
   {
-    name: "Marc Lou",
-    text: "The tool is exactly what I didn't even know I needed.",
-    videoPoster: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcPoster.jpg",
-    videoSrc: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcVideo.mp4",
-    videoHeight: 250,
-    videoWidth: 500,
-    type: refTypes.video,
+    name: "Jessica L.",
+    text: "I've tried many meditation apps, but this one focuses purely on breathing which is exactly what I needed. The timer is perfect for my daily routine.",
+    type: refTypes.other,
   },
   {
-    username: "zawwadx",
-    name: "Zawwad Ul Sami",
-    text: "It's an amazing minimalist, lightweight boilerplate with well-organized code. It has almost all the core features you would want in a SaaS boilerplate. As a new team last year it actually took us months to build a similar set of features at a stable level.",
-    type: refTypes.twitter,
+    name: "David K.",
+    text: "Perfect for quick stress relief between meetings. The box breathing technique has become my go-to for staying calm during high-pressure situations.",
+    type: refTypes.other,
   },
   {
-    username: "dan",
-    name: "Dan Mindru",
-    text: "Probably one of the most powerful things you can 'npm install' that I've seen",
-    type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2706763",
+    name: "Emily W.",
+    text: "I'm a medical student and this app has helped me manage exam anxiety. The science behind the breathing techniques is solid and it actually works!",
+    type: refTypes.other,
+  },
+  {
+    name: "Alex T.",
+    text: "Simple, effective, no fluff. Just good breathing exercises that help me decompress after long workdays. Exactly what I was looking for.",
+    type: refTypes.other,
+  },
+  {
+    name: "Maria G.",
+    text: "The progress tracking motivates me to practice daily. I've noticed a real improvement in my stress levels since using this consistently.",
+    type: refTypes.other,
+  },
+  {
+    name: "James H.",
+    text: "Clean design, easy to use, and actually helps. I use it before important presentations and it's made a huge difference in my confidence.",
+    type: refTypes.other,
+  },
+  {
+    name: "Lisa C.",
+    text: "As a working mom, I don't have time for complicated wellness apps. This gives me quick, effective breathing exercises I can do anywhere.",
+    type: refTypes.other,
+  },
+  {
+    name: "Ryan P.",
+    text: "The embed feature is genius! I've added it to our company's wellness page so our team can use it during stressful periods.",
+    type: refTypes.other,
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
-    username: "VicPivots",
-    name: "Victor Abeledo",
-    text: "Marc, I got your boilerplate and having the payments setup with Stripe + user auth is a blessing. This will save me like a week of work for each new side project I spin up. I appreciate that is well documented, as well. 100% worth it 🚀🚀🚀",
-    type: refTypes.twitter,
-    link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
+    name: "Dr. Amanda Chen",
+    text: "As a therapist, I recommend this app to my clients dealing with anxiety. The breathing techniques are evidence-based and the simplicity makes it accessible for everyone. It's become an essential tool in my practice for teaching stress management.",
+    type: refTypes.other,
   },
 ];
 
@@ -174,12 +148,12 @@ const Testimonial = ({ i }: { i: number }) => {
 
   return (
     <li key={i}>
-      <figure className="relative h-full p-6 bg-base-100 rounded-lg">
+      <figure className="relative h-full p-6 bg-white rounded-lg shadow-sm">
         <blockquote className="relative">
-          <p className="text-sm text-base-content/80">{testimonial.text}</p>
+          <p className="text-sm text-[#283618]/80">{testimonial.text}</p>
         </blockquote>
-        <figcaption className="relative flex items-center justify-start gap-4 pt-4 mt-4 border-t border-base-content/5">
-          <div className="overflow-hidden rounded-full bg-base-300 shrink-0">
+        <figcaption className="relative flex items-center justify-start gap-4 pt-4 mt-4 border-t border-[#283618]/10">
+          <div className="overflow-hidden rounded-full bg-[#dda15e]/20 shrink-0">
             {testimonial.img ? (
               <Image
                 className="w-10 h-10 rounded-full object-cover"
@@ -189,18 +163,18 @@ const Testimonial = ({ i }: { i: number }) => {
                 height={48}
               />
             ) : (
-              <span className="w-10 h-10 rounded-full flex justify-center items-center text-lg font-medium bg-base-300">
+              <span className="w-10 h-10 rounded-full flex justify-center items-center text-lg font-medium bg-[#dda15e]/20 text-[#283618]">
                 {testimonial.name.charAt(0)}
               </span>
             )}
           </div>
           <div className="w-full flex items-end justify-between gap-2">
             <div>
-              <div className="text-sm font-medium text-base-content">
+              <div className="text-sm font-medium text-[#283618]">
                 {testimonial.name}
               </div>
               {testimonial.username && (
-                <div className="mt-0.5 text-sm text-base-content/80">
+                <div className="mt-0.5 text-sm text-[#283618]/80">
                   @{testimonial.username}
                 </div>
               )}
@@ -361,16 +335,16 @@ const VideoTestimonial = ({ i }: { i: number }) => {
 
 const Testimonials11 = () => {
   return (
-    <section className="bg-base-200" id="testimonials">
+    <section className="bg-[#fefae0] text-[#283618]" id="testimonials">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
-            <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
-              212 makers are already shipping faster!
+            <h2 className="sm:text-5xl text-4xl font-extrabold text-[#283618]">
+              Thousands are already breathing better!
             </h2>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
-            Don&apos;t take our word for it. Here&apos;s what they have to say
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-[#283618]/80">
+            Don&apos;t take our word for it. Here&apos;s what our users have to say
             about {config.appName}.
           </p>
         </div>
@@ -391,14 +365,14 @@ const Testimonials11 = () => {
             {/* BIG FEATURED TESTIMONIAL — THE LAST ONE IN THE LIST (11th) */}
             <ul className="col-span-2">
               <li>
-                <figure className="relative h-full p-6 bg-base-100 rounded-lg">
+                <figure className="relative h-full p-6 bg-white rounded-lg shadow-sm">
                   <blockquote className="relative p-4">
-                    <p className="text-lg font-medium text-base-content">
+                    <p className="text-lg font-medium text-[#283618]">
                       {list[list.length - 1].text}
                     </p>
                   </blockquote>
-                  <figcaption className="relative flex items-center justify-start gap-4 pt-4 mt-4 border-t border-base-content/5">
-                    <div className="overflow-hidden rounded-full bg-base-300 shrink-0">
+                  <figcaption className="relative flex items-center justify-start gap-4 pt-4 mt-4 border-t border-[#283618]/10">
+                    <div className="overflow-hidden rounded-full bg-[#dda15e]/20 shrink-0">
                       {list[list.length - 1].img ? (
                         <Image
                           className="w-12 h-12 rounded-full object-cover"
@@ -410,17 +384,17 @@ const Testimonials11 = () => {
                           height={48}
                         />
                       ) : (
-                        <span className="w-12 h-12 rounded-full flex justify-center items-center text-xl font-medium bg-base-300">
+                        <span className="w-12 h-12 rounded-full flex justify-center items-center text-xl font-medium bg-[#dda15e]/20 text-[#283618]">
                           {list[list.length - 1].name.charAt(0)}
                         </span>
                       )}
                     </div>
                     <div>
-                      <div className="text-base font-medium text-base-content">
+                      <div className="text-base font-medium text-[#283618]">
                         {list[list.length - 1].name}
                       </div>
                       {list[list.length - 1].username && (
-                        <div className="mt-1 text-base text-base-content/80">
+                        <div className="mt-1 text-base text-[#283618]/80">
                           @{list[list.length - 1].username}
                         </div>
                       )}

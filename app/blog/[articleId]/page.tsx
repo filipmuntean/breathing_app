@@ -6,16 +6,25 @@ import Avatar from "../_assets/components/Avatar";
 import { getSEOTags } from "@/lib/seo";
 import config from "@/config";
 import AdSense from "@/components/AdSense";
+import SocialShare from "@/components/SocialShare";
 
-type Params = Promise<{ articleid: string }>;
+type Params = Promise<{ articleId: string }>;
 
 export async function generateMetadata({
   params,
 }: {
   params: Params;
 }) {
-  const {articleid} = await params;
-  const article = articles.find((article) => article.slug === articleid);
+  const {articleId} = await params;
+  const article = articles.find((article) => article.slug === articleId);
+
+  if (!article) {
+    return getSEOTags({
+      title: "Article Not Found",
+      description: "The requested article could not be found.",
+      canonicalUrlRelative: `/blog`,
+    });
+  }
 
   return getSEOTags({
     title: article.title,
@@ -45,12 +54,25 @@ export default async function Article({
 }: {
   params: Params;
 }) {
-  const {articleid} = await params;
-  const article = articles.find((article) => article.slug === articleid);
+  const {articleId} = await params;
+  const article = articles.find((article) => article.slug === articleId);
+  
+  if (!article) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
+        <p className="text-base-content/80 mb-8">The requested article could not be found.</p>
+        <Link href="/blog" className="btn btn-primary">
+          Back to Blog
+        </Link>
+      </div>
+    );
+  }
+  
   const articlesRelated = articles
     .filter(
       (a) =>
-        a.slug !== articleid &&
+        a.slug !== articleId &&
         a.categories.some((c) =>
           article.categories.map((c) => c.slug).includes(c.slug)
         )
@@ -180,6 +202,13 @@ export default async function Article({
           {/* ARTICLE CONTENT */}
           <section className="w-full max-md:pt-4 md:pr-20 space-y-12 md:space-y-20">
             {article.content}
+            
+            {/* Social Share Buttons */}
+            <SocialShare 
+              url={`https://${config.domainName}/blog/${article.slug}`}
+              title={article.title}
+              description={article.description}
+            />
             
             {/* AdSense Ad */}
             <div className="my-8 flex justify-center">

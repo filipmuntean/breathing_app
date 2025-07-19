@@ -126,14 +126,14 @@ const socialIcons: {
 const authorSlugs: {
   [key: string]: string;
 } = {
-  marc: "marc",
+  filip: "filip",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
 export const authors: authorType[] = [
   {
     // The slug to use in the URL, from the authorSlugs object above.
-    slug: authorSlugs.marc,
+    slug: authorSlugs.filip,
     // The name to display in the author's bio. Up to 60 characters.
     name: "Filip Muntean",
     // The job to display in the author's bio. Up to 60 characters.
@@ -210,7 +210,7 @@ export const articles: articleType[] = [
     categories: [
       categories.find((category) => category.slug === 'tutorial')
     ],
-    author: authors.find((author) => author.slug === 'marc'), // Using existing author for now
+    author: authors.find((author) => author.slug === 'filip'), // Using existing author for now
     publishedAt: '2024-03-27',
     image: {
       src: placeholderImage1,
@@ -273,7 +273,7 @@ export const articles: articleType[] = [
     categories: [
       categories.find((category) => category.slug === 'tutorial')
     ],
-    author: authors.find((author) => author.slug === 'marc'), // Using existing author for now
+    author: authors.find((author) => author.slug === 'filip'), // Using existing author for now
     publishedAt: '2024-04-10',
     image: {
       src: placeholderImage2,
@@ -334,7 +334,7 @@ export const articles: articleType[] = [
     categories: [
       categories.find((category) => category.slug === 'tutorial')
     ],
-    author: authors.find((author) => author.slug === 'marc'),
+    author: authors.find((author) => author.slug === 'filip'),
     publishedAt: '2024-05-15',
     image: {
       src: placeholderImage1,
@@ -388,7 +388,7 @@ export const articles: articleType[] = [
     categories: [
       categories.find((category) => category.slug === 'tutorial')
     ],
-    author: authors.find((author) => author.slug === 'marc'),
+    author: authors.find((author) => author.slug === 'filip'),
     publishedAt: '2024-06-02',
     image: {
       src: placeholderImage2,
@@ -453,7 +453,7 @@ export const articles: articleType[] = [
     categories: [
       categories.find((category) => category.slug === 'tutorial')
     ],
-    author: authors.find((author) => author.slug === 'marc'),
+    author: authors.find((author) => author.slug === 'filip'),
     publishedAt: '2024-06-20',
     image: {
       src: placeholderImage1,

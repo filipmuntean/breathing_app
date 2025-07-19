@@ -1,4 +1,5 @@
 import ButtonAccount from "@/components/ButtonAccount";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,9 @@ export default async function Dashboard() {
         <ButtonAccount />
         <h1 className="text-3xl md:text-4xl font-extrabold">Private Page</h1>
         <p>You can log out here, or go back to the home page</p>
+        <Link href="/" className="btn bg-[#dda15e] text-[#283618] hover:bg-[#c98f4f] hover:text-[#606c38]">
+          Back to Homepage
+        </Link>
       </section>
     </main>
   );

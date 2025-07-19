@@ -11,11 +11,14 @@ import CTA from "@/components/CTA";
 import About from '@/components/About';
 import Footer from "@/components/Footer";
 import Progress from '@/components/Progress';
+import Testimonials11 from '@/components/Testimonials11';
+import Features from '@/components/Features';
+import { renderSchemaTags } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
-
+      {renderSchemaTags()}
       <Suspense>
         <Header />
       </Suspense>
@@ -31,6 +34,10 @@ export default function Home() {
        
         {/* <About /> */}
         <Problem />
+        
+        <Features />
+        
+        <Testimonials11 />
         
         <FAQ />
         {/* <FeaturesAccordion /> */}

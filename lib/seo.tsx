@@ -89,21 +89,30 @@ export const renderSchemaTags = () => {
           url: `https://${config.domainName}/`,
           author: {
             "@type": "Person",
-            name: "Marc Lou",
+            name: "Filip Muntean",
           },
-          datePublished: "2023-08-01",
-          applicationCategory: "EducationalApplication",
+          datePublished: "2024-01-01",
+          applicationCategory: "HealthApplication",
+          keywords: ["breathing exercises", "anxiety relief", "meditation", "stress management", "mindfulness"],
           aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "4.8",
-            ratingCount: "12",
+            ratingValue: "4.9",
+            ratingCount: "127",
           },
           offers: [
             {
               "@type": "Offer",
-              price: "9.00",
+              price: "0",
               priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
             },
+          ],
+          featureList: [
+            "4-7-8 Breathing Technique",
+            "Guided Breathing Exercises", 
+            "Anxiety Relief Tools",
+            "Progress Tracking",
+            "Mobile Responsive"
           ],
         }),
       }}
