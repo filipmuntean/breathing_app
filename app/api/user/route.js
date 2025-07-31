@@ -1,10 +1,10 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/next-auth";
 import connectMongo from "@/lib/mongoose";
 import User from "@/models/User";
 
-export async function GET(req) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
     

@@ -66,7 +66,7 @@ export default function ResourcesPage() {
           </div>
           <div>
             <h3 className="font-medium mb-1">🔗 Attribution Required</h3>
-            <p className="text-gray-600">Please credit "justbreathe.baby" when sharing</p>
+            <p className="text-gray-600">Please credit &ldquo;justbreathe.baby&rdquo; when sharing</p>
           </div>
           <div>
             <h3 className="font-medium mb-1">🚫 No Redistribution</h3>

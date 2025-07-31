@@ -1,7 +1,4 @@
-import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
-import config from "@/config";
-import ButtonLead from "@/components/ButtonLead";
 import GetStarted from "./GetStarted";
 
 const Hero = () => {
@@ -27,13 +24,13 @@ const Hero = () => {
           Find Your Calm, One Breath at a Time
         </h1>
         <p className="text-lg opacity-80 leading-relaxed mb-6">
-          Our evidence-based breathing exercises are scientifically proven to reduce anxiety, lower stress hormones, and activate your body's natural relaxation response. Whether you're dealing with work pressure, academic stress, or daily overwhelm, guided breathwork can help you find immediate calm and build long-term resilience.
+          Our evidence-based breathing exercises are scientifically proven to reduce anxiety, lower stress hormones, and activate your body&apos;s natural relaxation response. Whether you&apos;re dealing with work pressure, academic stress, or daily overwhelm, guided breathwork can help you find immediate calm and build long-term resilience.
         </p>
         
         <div className="bg-base-200 rounded-lg p-6 mb-6">
           <h3 className="font-bold text-lg mb-3">Why Breathing Works for Anxiety:</h3>
           <ul className="text-left space-y-2">
-            <li>• <strong>Activates parasympathetic nervous system</strong> - Your body's "rest and digest" mode</li>
+            <li>• <strong>Activates parasympathetic nervous system</strong> - Your body&apos;s &ldquo;rest and digest&rdquo; mode</li>
             <li>• <strong>Reduces cortisol levels</strong> - The primary stress hormone</li>
             <li>• <strong>Increases oxygen flow to the brain</strong> - Improving focus and decision-making</li>
             <li>• <strong>Stimulates the vagus nerve</strong> - Promoting calm and emotional regulation</li>

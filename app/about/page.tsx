@@ -1,6 +1,3 @@
-import FeaturesAccordion from "@/components/FeaturesAccordion";
-import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
 import Link from "next/link";
 
 const About = () => {

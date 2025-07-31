@@ -22,9 +22,34 @@ export const viewport: Viewport = {
 export const metadata = getSEOTags();
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
   return (
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
       <head>
+        <Script
+          id="usercentrics-cmp"
+          src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+          data-settings-id="Pmr7R99vbFXc7Q"
+          async
+          strategy="afterInteractive"
+        />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body>
         {/* ClientLayout contains all the client wrappers (Crisp chat support, toast messages, tooltips, etc.) */}

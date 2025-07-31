@@ -45,7 +45,7 @@ export default async function Author({
           Author Not Found
         </h1>
         <p className="text-lg text-base-content/80 mb-8">
-          The author you're looking for doesn't exist or may have been removed.
+          The author you&apos;re looking for doesn&apos;t exist or may have been removed.
         </p>
         <a href="/blog" className="btn btn-primary">
           Back to Blog

@@ -1,7 +1,6 @@
 "use client";
 
 import EmbeddableBreathingWidget from "@/components/EmbeddableBreathingWidget";
-import { getSEOTags } from "@/lib/seo";
 
 
 export default function EmbedPage() {
@@ -13,14 +12,6 @@ export default function EmbedPage() {
   title="Breathing Exercise Widget">
 </iframe>`;
 
-  const iframeCode = `<iframe 
-  src="https://justbreathe.baby/widget?width=300&height=400&branding=true" 
-  width="300" 
-  height="400" 
-  frameborder="0" 
-  title="Just Breathe Widget"
-  style="border-radius: 8px;">
-</iframe>`;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
